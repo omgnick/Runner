@@ -4,16 +4,21 @@ using System.Collections;
 public class RunnerController : RunnerAnimationController {
 
 	public float jumpHeight = 2f;
-	public float jumpTime = 1f;
+	public float jumpSpeed = 1f;
 	public float maxSpeed = 6f;
 	public float acceleration = 4f;
 	public float turnSpeed = 1f;
 	public float turnDistance = 1f;
 
-	private Vector3 moveForce;
-	private float jumpStartTime = 0f;
-	private float currentSpeed = 0f;
-	private float turnWay = 0f;
+	private Vector3 moveDistance;
+	private Vector3 moveSpeed;
+
+
+
+	public RunnerController(){
+		moveDistance = Vector3.zero;
+		moveSpeed = Vector3.zero;
+	}
 
 
 
@@ -25,7 +30,8 @@ public class RunnerController : RunnerAnimationController {
 
 	public void TurnRight() {
 		if(CanTurn){
-			turnWay = turnDistance;
+			moveDistance.x = turnDistance;
+			moveSpeed.x = turnSpeed;
 			IsTurningRight = true;
 		}
 	}
@@ -34,23 +40,16 @@ public class RunnerController : RunnerAnimationController {
 
 	public void TurnLeft() {
 		if(CanTurn){
-			turnWay = -turnDistance;
+			moveDistance.x = -turnDistance;
+			moveSpeed.x = -turnSpeed;
 			IsTurningLeft = true;
 		}
 	}
 
 
 
-	public void Update() {
-
-		DoRun ();
-
-		if(IsInJump)
-			DoJump();
-
-		if(IsInTurn){
-			DoTurn();
-		}
+	public void FixedUpdate() {
+		ApplyForce();
 	}
 
 
@@ -68,14 +67,15 @@ public class RunnerController : RunnerAnimationController {
 	public void Jump() {
 		if(CanJump){
 			IsJumping = true;
-			jumpStartTime = Time.time;
+			moveDistance.y += jumpHeight;
+			moveSpeed.y += jumpSpeed;
 		}
 	}
 
 
-	private bool IsInJump {
+	private bool IsInAir {
 		get {
-			return Time.time - jumpStartTime < jumpTime && jumpStartTime != 0;
+			return moveSpeed.y != 0;
 		}
 	}
 
@@ -83,38 +83,51 @@ public class RunnerController : RunnerAnimationController {
 
 	private bool IsJumpLanding {
 		get {
-			return Time.time - jumpStartTime > jumpTime / 2f;
+			return moveSpeed.y < 0;
 		}
 	}
 
 
 
-	private void DoJump() {
-		if(IsJumpLanding){
-			float delta = Mathf.Min(Time.deltaTime, Mathf.Abs(Time.time - jumpStartTime - jumpTime));
-			Debug.Log(string.Format("Landing delta = {0} Time.deltaTime = {1} jumpLeftTime = {2}", delta, Time.deltaTime,
-			                        Mathf.Abs(Time.time - jumpStartTime - jumpTime)));
-			CachedTransform.Translate(Vector3.down * (jumpHeight / jumpTime) * delta);
-		} else {
-			float delta = Mathf.Min(Time.deltaTime, Mathf.Abs(Time.time - jumpStartTime - jumpTime / 2f));
-			Debug.Log(string.Format("Rising delta = {0} Time.deltaTime = {1} jumpLeftTime = {2}", delta, Time.deltaTime,
-			                        Mathf.Abs(Time.time - jumpStartTime - jumpTime / 2f)));
-			CachedTransform.Translate(Vector3.up * (jumpHeight / jumpTime) * delta);
+	private bool IsJumpTopPoint{
+		get{
+			return moveDistance.y == 0 && moveSpeed.y > 0;
 		}
 	}
 
 
+	private void ApplyForce(){
+		Vector3 move = Time.deltaTime * moveSpeed;
 
-	private void DoRun() {
-		currentSpeed += acceleration * Time.deltaTime;
-		CachedTransform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+		//OX
+		move.x = Mathf.Min(Mathf.Abs(move.x), Mathf.Abs(moveDistance.x)) * Mathf.Sign(moveDistance.x);
+		moveDistance.x -= move.x;
+
+		if(moveDistance.x == 0)
+			moveSpeed.x = 0;
+
+
+		//OY
+		move.y = Mathf.Min (move.y, moveDistance.y);
+		moveDistance.y -= move.y;
+
+		if(IsJumpTopPoint) {
+			moveSpeed.y = Config.world_gravity;
+			moveDistance.y = 0;
+		}
+
+		//OZ
+		moveSpeed.z = Mathf.Min(moveSpeed.z + acceleration * Time.deltaTime, maxSpeed);
+			
+
+		CachedTransform.Translate(move);
 	}
 
 
 
 	private bool IsInTurn {
 		get{
-			return turnWay != 0;
+			return moveSpeed.x != 0;
 		}
 	}
 
@@ -122,7 +135,7 @@ public class RunnerController : RunnerAnimationController {
 
 	private bool CanTurn {
 		get{
-			return !IsInJump && !IsInTurn && !IsInSlide;
+			return !IsInAir && !IsInTurn && !IsInSlide;
 		}
 	}
 
@@ -130,16 +143,8 @@ public class RunnerController : RunnerAnimationController {
 
 	private bool CanJump {
 		get {
-			return !IsInJump && !IsInTurn && !IsInSlide;
+			return !IsInAir && !IsInTurn && !IsInSlide;
 		}
-	}
-
-
-
-	private void DoTurn() {
-		float distance = Mathf.Min(turnSpeed * Time.deltaTime, Mathf.Abs(turnWay)) * Mathf.Sign(turnWay);
-		CachedTransform.Translate(Vector3.right * distance);
-		turnWay -= distance;
 	}
 
 
@@ -153,7 +158,7 @@ public class RunnerController : RunnerAnimationController {
 
 	private bool CanSlide {
 		get {
-			return !IsInJump && !IsInTurn && !IsInSlide;
+			return !IsInAir && !IsInTurn && !IsInSlide;
 		}
 	}
 
@@ -169,6 +174,20 @@ public class RunnerController : RunnerAnimationController {
 	#region Collider
 	
 	private void OnCollisionEnter(Collision collisionInfo){
+
+		foreach(ContactPoint point in collisionInfo.contacts){
+
+			//AIR
+			if(IsJumpLanding && point.normal.y > 0){
+				moveSpeed.y = 0;
+				moveDistance.y = 0;
+				CachedTransform.position = point.point;
+			} else if(IsInAir && !IsJumpLanding && point.normal.y < 0){
+				moveSpeed.y = -Config.world_gravity;
+				moveDistance.y = 0;
+			}
+
+		}
 	}
 
 

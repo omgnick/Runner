@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Imported\MovementAnimsetProLite\Scripts\MouseOrbit.js" />
-     <Compile Include="Assets\Scripts\CharacterMove.js" />
-     <Compile Include="Assets\Scripts\GameFinish.js" />
-     <Compile Include="Assets\Scripts\PlatformCamera.js" />
+     <Compile Include="Assets\Imported\Scripts\CharacterMove.js" />
+     <Compile Include="Assets\Imported\Scripts\GameFinish.js" />
+     <Compile Include="Assets\Imported\Scripts\PlatformCamera.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\ skybox info.txt" />
