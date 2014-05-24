@@ -46,36 +46,46 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameAnalytics\Editor\GA_AutoRun.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_DatePicker.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_DeleteAssetBundleMenu.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_EventPicker.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_ExampleTutorial.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_HeatMapInspector.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_HeatMapRendererInspector.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_HeatmapColorPresetPicker.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_HeatmapCombineTypePicker.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_Inspector.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_Menu.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_SetupWizard.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_Status.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_SystemTrackerInspector.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_TrackerInspector.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_UpdateWindow.cs" />
-     <Compile Include="Assets\GameAnalytics\Editor\GA_WebInterface.cs" />
-     <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\PlayMakerPresenceCheck.cs" />
-     <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\SendUserEventActionEditor.cs" />
-     <None Include="Assets\GameAnalytics\Plugins\Framework\Shaders\GA_HeatMapSolidOverlay.shader" />
-     <None Include="Assets\GameAnalytics\Plugins\Framework\Shaders\GA_HeatMapTransparentOverlay.shader" />
-     <None Include="Assets\GameAnalytics\Plugins\Framework\Shaders\GA_HeatMapSolid.shader" />
-     <None Include="Assets\GameAnalytics\Plugins\Framework\Shaders\GA_HeatMapTransparent.shader" />
-     <None Include="Assets\GameAnalytics\Plugins\WebPlayer\Readme_WebPlayer.txt" />
-     <None Include="Assets\GameAnalytics\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\MovementAnimsetProLite\readme.txt" />
-     <None Include="Assets\GameAnalytics\Plugins\Android\Android_Readme.txt" />
-     <None Include="Assets\GameAnalytics\Plugins\iOS\iOS_Readme.txt" />
-     <None Include="Assets\Animations\_CompleteAnimationList.txt" />
-     <None Include="Assets\GameAnalytics\Plugins\WebPlayer\crossdomain.xml" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\ComponentSelector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\NGUITransformInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIAtlasInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIDrawCallInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIFilledSpriteInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIFontInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIImageButtonInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UILabelInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIPopupListInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIScrollBarInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UISettings.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UISlicedSpriteInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UISliderInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UISpriteAnimationInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UISpriteInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UITextureInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UITiledSpriteInspector.cs" />
+     <Compile Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Depth.shader" />
+     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Imported\Mobile-Cartoony\ReadMe.txt" />
+     <None Include="Assets\Standard Assets\Skyboxes\ skybox info.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Imported\Models\Level Making Models\Tree\tropical_plant\readme.txt" />
+     <None Include="Assets\Imported\MovementAnimsetProLite\readme.txt" />
+     <None Include="Assets\Imported\SkySphere_V1\Documentation\How to use.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Imported\sky5X\README.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ReadMe.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\ReadMe.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\Imported\Animations\_CompleteAnimationList.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Imported\prototype_textures\readme.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
  </Reference>
@@ -97,6 +107,16 @@
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>D:\Program Files\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="NGUI_Editor">
+ <HintPath>Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="NGUI">
+ <HintPath>Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\DLLs\NGUI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{64E2F6C6-1576-AED7-02C5-6D94F5E99C09}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

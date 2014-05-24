@@ -50,13 +50,31 @@
      <Compile Include="Assets\Imported\Scripts\CharacterMove.js" />
      <Compile Include="Assets\Imported\Scripts\GameFinish.js" />
      <Compile Include="Assets\Imported\Scripts\PlatformCamera.js" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Imported\Mobile-Cartoony\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\ skybox info.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Imported\Models\Level Making Models\Tree\tropical_plant\readme.txt" />
      <None Include="Assets\Imported\MovementAnimsetProLite\readme.txt" />
+     <None Include="Assets\Imported\SkySphere_V1\Documentation\How to use.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Imported\sky5X\README.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ReadMe.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\ReadMe.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
      <None Include="Assets\Imported\Animations\_CompleteAnimationList.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Imported\prototype_textures\readme.txt" />
+     <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
+ <Reference Include="NGUI">
+ <HintPath>Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\DLLs\NGUI.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
