@@ -52,6 +52,7 @@
      <Compile Include="Assets\Imported\FT_FreeSample\Script\SampleSceneGUI.js" />
      <Compile Include="Assets\Imported\FT_FreeSample\Script\StopCAM.js" />
      <Compile Include="Assets\Imported\FT_FreeSample\Script\VisibleBG.js" />
+     <Compile Include="Assets\Imported\IndustrialSciFiBuilderKit\Scripts\SimpleDoor.js" />
      <Compile Include="Assets\Imported\MovementAnimsetProLite\Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
