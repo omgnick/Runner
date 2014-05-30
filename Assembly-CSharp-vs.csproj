@@ -161,6 +161,8 @@
      <Compile Include="Assets\Scripts\AnimationControllers\RunnerAnimationController.cs" />
      <Compile Include="Assets\Scripts\Config.cs" />
      <Compile Include="Assets\Scripts\Engine\CachedBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Engine\LevelGenerator.cs" />
+     <Compile Include="Assets\Scripts\Engine\LevelPrefab.cs" />
      <Compile Include="Assets\Scripts\Inputs\RunUserInput.cs" />
      <Compile Include="Assets\Scripts\ObjectControllers\RunnerController.cs" />
      <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Depth.shader" />

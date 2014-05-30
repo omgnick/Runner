@@ -52,7 +52,6 @@
      <Compile Include="Assets\Imported\FT_FreeSample\Script\SampleSceneGUI.js" />
      <Compile Include="Assets\Imported\FT_FreeSample\Script\StopCAM.js" />
      <Compile Include="Assets\Imported\FT_FreeSample\Script\VisibleBG.js" />
-     <Compile Include="Assets\Imported\IndustrialSciFiBuilderKit\Scripts\SimpleDoor.js" />
      <Compile Include="Assets\Imported\MovementAnimsetProLite\Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
@@ -87,6 +86,7 @@
      <Compile Include="Assets\Imported\Scripts\GameFinish.js" />
      <Compile Include="Assets\Imported\Scripts\PlatformCamera.js" />
      <Compile Include="Assets\Imported\Steel Barrels\demo controls.js" />
+     <Compile Include="Assets\Resources\Models\IndustrialSciFiBuilderKit\Scripts\SimpleDoor.js" />
      <None Include="Assets\Imported\Fantasy-Colorable\ThirdParty\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
