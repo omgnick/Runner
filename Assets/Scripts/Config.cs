@@ -3,5 +3,5 @@ using System.Collections;
 
 public class Config {
 
-	public static float world_gravity = -10f;
+	public static float world_gravity = -5f;
 }

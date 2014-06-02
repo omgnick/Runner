@@ -1,0 +1,165 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/DLLs/NGUI.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_ANDROID
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:ENABLE_MONO
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_GENERICS
+-define:ENABLE_SUBSTANCE
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:UNITY_ANDROID_API
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_3_4
+-define:UNITY_4_3
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+-define:UNITY_TEAM_LICENSE
+-define:Engine
+Assets/Imported/Elementals/Scripts/OrbitCamera.cs
+Assets/Imported/Elementals/Scripts/TestParticles.cs
+Assets/Imported/FT_FreeSample/Script/Button.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/ChangeColor.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/ChangeColorButton.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/ColoredGUISkin.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/DemoGuiSkin.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/LoadScene.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/MoveOnPress.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/NonScalingImageButton.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/ScrollBarButton.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/ToggleImage.cs
+Assets/Imported/Fantasy-Colorable/SupportingArtefacts/Scripts/UITab.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/LanguageSelection.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButton.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonColor.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonKeys.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonMessage.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonOffset.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonPlayAnimation.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonRotation.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonScale.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonSound.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIButtonTween.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UICheckbox.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UICheckboxControlledComponent.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UICheckboxControlledObject.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIDragCamera.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIDragObject.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIDragPanelContents.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIDraggableCamera.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIDraggablePanel.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIForwardEvents.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIGrid.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIImageButton.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIInputValidator.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIPopupList.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UISavedOption.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UIScrollBar.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UISlider.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UISliderColors.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Interaction/UITable.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Internal/Localization.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Internal/SpringPanel.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenColor.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenPosition.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenRotation.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenScale.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenTransform.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/TweenVolume.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/Tweening/UITweener.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIAnchor.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIAtlas.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UICamera.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIFilledSprite.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIFont.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIInput.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIInputSaved.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UILabel.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UILocalize.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIOrthoCamera.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIPanel.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIRoot.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UISlicedSprite.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UISprite.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UISpriteAnimation.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIStretch.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UITextList.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UITexture.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UITiledSprite.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UITooltip.cs
+Assets/Imported/Fantasy-Colorable/ThirdParty/NGUI/Scripts/UI/UIViewport.cs
+Assets/Imported/Locomotion/Scripts/Locomotion.cs
+Assets/Imported/Mobile-Cartoony/Mobile-Cartoony/SupportingArtefacts/Scripts/ColoredGUISkinMobile.cs
+Assets/Imported/Mobile-Cartoony/Mobile-Cartoony/SupportingArtefacts/Scripts/DemoGuiSkinMobile.cs
+Assets/Imported/MovementAnimsetProLite/Scripts/InputWalk.cs
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/BlurEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/ColorCorrectionEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/ContrastStretchEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/EdgeDetectEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/GlowEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/GrayscaleEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/ImageEffectBase.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/ImageEffects.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/MotionBlur.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/NoiseEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/SSAOEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/SepiaToneEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/TwirlEffect.cs"
+"Assets/Imported/SciFi level 2/Standard Assets/Image Effects (Pro Only)/VortexEffect.cs"
+Assets/Imported/Scripts/Agent.cs
+Assets/Imported/Scripts/AnimatorController_UI.cs
+Assets/Imported/Scripts/Bazooka.cs
+Assets/Imported/Scripts/Bear.cs
+Assets/Imported/Scripts/Follow.cs
+Assets/Imported/Scripts/Follow_UI.cs
+Assets/Imported/Scripts/FootPlanting.cs
+Assets/Imported/Scripts/IK.cs
+Assets/Imported/Scripts/IdleRunJump.cs
+Assets/Imported/Scripts/MindBotCamera.cs
+Assets/Imported/Scripts/MineBot.cs
+Assets/Imported/Scripts/NavMesh_UI.cs
+Assets/Imported/Scripts/PreciseTurnOnSpot.cs
+Assets/Imported/Scripts/Ragdoll.cs
+Assets/Imported/Scripts/RandomCharacters.cs
+Assets/Imported/Scripts/Responsive.cs
+Assets/Imported/Scripts/ScaleCapsule.cs
+Assets/Imported/Scripts/Spawner.cs
+Assets/Imported/Scripts/TargetMatching.cs
+Assets/Imported/Scripts/ThirdPersonCamera.cs
+Assets/Imported/SkySphere_V1/Examples/Gui.cs
+Assets/Imported/SkySphere_V1/Examples/MouseLook.cs
+Assets/RunEngine.cs
+Assets/Scripts/AnimationControllers/RunnerAnimationController.cs
+Assets/Scripts/Config.cs
+Assets/Scripts/Engine/CachedBehaviour.cs
+Assets/Scripts/Engine/CharacterGenerator.cs
+Assets/Scripts/Engine/CharacterStats.cs
+Assets/Scripts/Engine/LevelGenerator.cs
+Assets/Scripts/Engine/LevelPrefab.cs
+Assets/Scripts/Engine/MonoSingleton.cs
+Assets/Scripts/Inputs/RunTouchUserInput.cs
+Assets/Scripts/Inputs/RunUserInput.cs
+Assets/Scripts/ObjectControllers/RunnerController.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"

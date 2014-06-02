@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RunUserInput : CachedBehaviour {
+public class RunUserInput : MonoSingleton<RunUserInput>, ICharacterControllerInput {
 
 	public RunnerController runnerController;
 
 
 
-	private void Start(){
-		runnerController.StartRunning();
+	public void Init(RunnerController runner){
+		runnerController = runner;
 	}
 
 

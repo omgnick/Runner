@@ -2,60 +2,107 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelGenerator : CachedBehaviour {
+public class LevelGenerator : MonoSingleton<LevelGenerator> {
 
 	public int MaxPrefabsNumber {get; set;}
+	public int MaxObstaclesNumber {get; set;}
 
 	private List<LevelPrefab> prefabs = new List<LevelPrefab>();
+	private List<LevelObstacle> obstecles = new List<LevelObstacle>();
 	private Queue<Transform> queue = new Queue<Transform>();
-	private Transform last_created;
+	private Transform lastInQueue;
 
 
 
-	public void AddPrefab(LevelPrefab prefab){
-		prefabs.Add(prefab);
+	public void LoadPrefabs(List<string> names) {
+		foreach(string name in names) {
+			GameObject obj = Resources.Load(name) as GameObject;
+			LevelPrefab prefab = obj.GetComponent<LevelPrefab>();
+			prefabs.Add(prefab);
+		}
 	}
 
 
 
 	public void StartBuildingLevel(){
-		StartCoroutine(BuildLevel());
+		StartCoroutine("BuildLevel");
 	}
 
 
 
 	private IEnumerator BuildLevel(){
+		InstantiatePrefabs();
 
-		for(int i = queue.Count; i < MaxPrefabsNumber; i++){
+		while(true){
+			Transform first = queue.Peek();
+			LevelPrefab prefab = first.GetComponent<LevelPrefab>();
 
+			while(!prefab.ShouldReplace){
+				yield return new WaitForSeconds(0.1f);
+			}
+
+			ReplaceFirstInQueue();
 		}
-
-		return null;
 	}
 
 
 
-	private void CreateRandomPrefab(){
-		LevelPrefab prefab = prefabs[Random.Range(0, prefabs.Count - 1)];
+	private void ReplaceFirstInQueue(){
+		Transform first = queue.Dequeue();
+		LevelPrefab prefab = first.GetComponent<LevelPrefab>();
+		first.position = lastInQueue.position + prefab.worldMargin;
+		lastInQueue = first;
+		queue.Enqueue(lastInQueue);
+	}
 
-		if(prefab.prefab == null){
-			prefab.prefab = Resources.Load(prefab.file) as GameObject; 
+
+
+	private void InstantiatePrefabs(){
+		Vector3 last_created_position = Vector3.zero;
+
+		for(int i = 0; i < MaxPrefabsNumber; i++){
+			LevelPrefab prefab = prefabs[i % prefabs.Count];
+
+			if(lastInQueue != null)
+				last_created_position += prefab.worldMargin;
+
+			GameObject obj = Instantiate(prefab.gameObject, last_created_position, Quaternion.identity) 
+				as GameObject;
+
+			lastInQueue = obj.transform;
+			queue.Enqueue(obj.transform);
 		}
+	}
 
-		GameObject obj = Instantiate(prefab.prefab) as GameObject;
 
-		if(last_created == null){
-			obj.transform.position = Vector3.zero;
-			obj.transform.rotation = Quaternion.Euler(Vector3.zero);
-			obj.transform.localScale = Vector3.one;
-		} else {
-			LevelPrefab last_prefab = last_created.GetComponent<LevelPrefab>();
-			Vector3 position = last_created.position + prefab.distance; 
-			obj.transform.position = position;
-			obj.transform.rotation = Quaternion.Euler(Vector3.zero);
-			obj.transform.localScale = Vector3.one;
+
+	public Vector3 StartPosition{
+		get{
+			return prefabs[0].startPosition;
 		}
+	}
 
-		last_created = obj.transform;
+
+
+	public bool IsGenerated {
+		get{
+			return queue.Count >= MaxPrefabsNumber;
+		}
+	}
+
+
+
+	public int TracksNumber {
+		get{
+			return prefabs[0].tracksNumber;
+		}
+	}
+
+
+
+	public float TrackLength {
+		get{
+			return prefabs[0].trackLength;
+		}
 	}
 }

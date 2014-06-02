@@ -3,21 +3,23 @@ using System.Collections;
 
 public class RunnerController : RunnerAnimationController {
 
-	public float jumpHeight = 2f;
-	public float jumpSpeed = 1f;
-	public float maxSpeed = 6f;
-	public float acceleration = 4f;
-	public float turnSpeed = 1f;
-	public float turnDistance = 1f;
+	private CharacterStats stats;
 
 	private Vector3 moveDistance;
 	private Vector3 moveSpeed;
+	private int turnNumber = 0;
 
 
 
 	public RunnerController(){
 		moveDistance = Vector3.zero;
 		moveSpeed = Vector3.zero;
+	}
+
+
+
+	public void Init(CharacterStats stats){
+		this.stats = stats;
 	}
 
 
@@ -29,19 +31,21 @@ public class RunnerController : RunnerAnimationController {
 
 
 	public void TurnRight() {
-		if(CanTurn){
-			moveDistance.x = turnDistance;
-			moveSpeed.x = turnSpeed;
+		if(CanTurnRight){
+			moveDistance.x = stats.turnDistance;
+			moveSpeed.x = stats.turnSpeed;
 			IsTurningRight = true;
+			turnNumber++;
 		}
 	}
 
 
 
 	public void TurnLeft() {
-		if(CanTurn){
-			moveDistance.x = -turnDistance;
-			moveSpeed.x = -turnSpeed;
+		if(CanTurnLeft){
+			moveDistance.x = -stats.turnDistance;
+			moveSpeed.x = -stats.turnSpeed;
+			turnNumber--;
 			IsTurningLeft = true;
 		}
 	}
@@ -67,8 +71,8 @@ public class RunnerController : RunnerAnimationController {
 	public void Jump() {
 		if(CanJump){
 			IsJumping = true;
-			moveDistance.y += jumpHeight;
-			moveSpeed.y += jumpSpeed;
+			moveDistance.y += stats.jumpHeight;
+			moveSpeed.y += stats.jumpSpeed;
 		}
 	}
 
@@ -117,7 +121,7 @@ public class RunnerController : RunnerAnimationController {
 		}
 
 		//OZ
-		moveSpeed.z = Mathf.Min(moveSpeed.z + acceleration * Time.deltaTime, maxSpeed);
+		moveSpeed.z = Mathf.Min(moveSpeed.z + stats.acceleration * Time.deltaTime, stats.maxSpeed);
 			
 
 		CachedTransform.Translate(move);
@@ -136,6 +140,22 @@ public class RunnerController : RunnerAnimationController {
 	private bool CanTurn {
 		get{
 			return !IsInAir && !IsInTurn && !IsInSlide;
+		}
+	}
+
+
+
+	private bool CanTurnLeft {
+		get{
+			return CanTurn && -stats.maxTurnsNumber < turnNumber; 
+		}
+	}
+
+
+
+	private bool CanTurnRight {
+		get{
+			return CanTurn && stats.maxTurnsNumber > turnNumber;
 		}
 	}
 
