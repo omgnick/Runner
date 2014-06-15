@@ -4,10 +4,13 @@ using System.Collections;
 public class CachedBehaviour : MonoBehaviour {
 
 	private Animator cachedAnimator;
+	private Animation cachedAnimation;
 	private Rigidbody cachedRigidbody;
 	private Collider cachedCollider;
 	private Transform cachedTransform;
 	private GameObject cachedGameObject;
+	private SphereCollider cachedSphereCollider;
+	private CapsuleCollider cachedCapsuleCollider;
 
 
 	public Animator CachedAnimator {
@@ -60,6 +63,39 @@ public class CachedBehaviour : MonoBehaviour {
 				cachedGameObject = gameObject;
 
 			return cachedGameObject;
+		}
+	}
+
+
+
+	public Animation CachedAnimation {
+		get {
+			if(cachedAnimation == null)
+				cachedAnimation = GetComponent<Animation>();
+			
+			return cachedAnimation;
+		}
+	}
+
+
+
+	public SphereCollider CachedSphereCollider{
+		get{
+			if(cachedSphereCollider == null)
+				cachedSphereCollider = GetComponent<SphereCollider>();
+
+			return cachedSphereCollider;
+		}
+	}
+
+
+
+	public CapsuleCollider CachedCapsuleCollider{
+		get{
+			if(cachedCapsuleCollider == null)
+				cachedCapsuleCollider = GetComponent<CapsuleCollider>();
+			
+			return cachedCapsuleCollider;
 		}
 	}
 }

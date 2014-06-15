@@ -5,10 +5,8 @@ using System.Collections.Generic;
 public class LevelGenerator : MonoSingleton<LevelGenerator> {
 
 	public int MaxPrefabsNumber {get; set;}
-	public int MaxObstaclesNumber {get; set;}
 
 	private List<LevelPrefab> prefabs = new List<LevelPrefab>();
-	private List<LevelObstacle> obstecles = new List<LevelObstacle>();
 	private Queue<Transform> queue = new Queue<Transform>();
 	private Transform lastInQueue;
 
@@ -24,24 +22,26 @@ public class LevelGenerator : MonoSingleton<LevelGenerator> {
 
 
 
-	public void StartBuildingLevel(){
+	public void RunBuildingLevelProcess(){
 		StartCoroutine("BuildLevel");
 	}
 
 
 
 	private IEnumerator BuildLevel(){
-		InstantiatePrefabs();
-
 		while(true){
 			Transform first = queue.Peek();
 			LevelPrefab prefab = first.GetComponent<LevelPrefab>();
 
 			while(!prefab.ShouldReplace){
-				yield return new WaitForSeconds(0.1f);
+				yield return new WaitForSeconds(0.5f);
 			}
 
+			LevelObstaclesGenerator.Instance.FreeObstacles(prefab);
+			LevelObstaclesGenerator.Instance.AddPrefabLevelToFillQueue(prefab);
 			ReplaceFirstInQueue();
+			LevelObstaclesGenerator.Instance.TryFillLevelPrefab();
+
 		}
 	}
 
@@ -57,7 +57,7 @@ public class LevelGenerator : MonoSingleton<LevelGenerator> {
 
 
 
-	private void InstantiatePrefabs(){
+	public void CreateLevel(){
 		Vector3 last_created_position = Vector3.zero;
 
 		for(int i = 0; i < MaxPrefabsNumber; i++){
@@ -70,7 +70,11 @@ public class LevelGenerator : MonoSingleton<LevelGenerator> {
 				as GameObject;
 
 			lastInQueue = obj.transform;
+			obj.transform.parent = CachedTransform;
 			queue.Enqueue(obj.transform);
+
+			if(i != 0)
+				LevelObstaclesGenerator.Instance.AddPrefabLevelToFillQueue(obj.GetComponent<LevelPrefab>());
 		}
 	}
 
@@ -102,7 +106,7 @@ public class LevelGenerator : MonoSingleton<LevelGenerator> {
 
 	public float TrackLength {
 		get{
-			return prefabs[0].trackLength;
+			return prefabs[0].cellWidth;
 		}
 	}
 }

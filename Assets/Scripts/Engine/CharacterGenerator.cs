@@ -8,29 +8,18 @@ public class CharacterGenerator : MonoSingleton<CharacterGenerator> {
 
 
 
-	public void CreateCharacterAfterLevelIsBuilt(CharacterStats stats, ICharacterControllerInput input){
-		StartCoroutine(DeferredCharacterCreation(stats, input));
-	}
-
-
-
-	private IEnumerator DeferredCharacterCreation(CharacterStats stats, ICharacterControllerInput input){
-		while(!LevelGenerator.Instance.IsGenerated)
-			yield return new WaitForSeconds(0.1f);
-
+	public void CreateCharacter(CharacterStats stats, ICharacterControllerInput input){
 		Object obj = Resources.Load(prefab_path);
 		GameObject obj_instance = Instantiate(obj) as GameObject;
 		CachedBehaviour behavior = obj_instance.GetComponent<CachedBehaviour>();
 		behavior.CachedTransform.position = LevelGenerator.Instance.StartPosition;
 		behavior.CachedTransform.rotation = Quaternion.identity;
+		behavior.CachedTransform.parent = CachedTransform;
 		RunnerController controller = behavior.GetComponent<RunnerController>();
 		controller.Init(stats);
 		input.Init(controller);
 		controller.StartRunning();
 		mainCharacter = behavior;
-	
-
-		return true;
 	}
 
 

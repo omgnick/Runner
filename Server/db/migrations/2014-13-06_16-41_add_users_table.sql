@@ -1,0 +1,1 @@
+CREATE TABLE `users` (id INT PRIMARY KEY, network_id CHAR(32), gold INT);

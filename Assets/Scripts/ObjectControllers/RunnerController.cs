@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class RunnerController : RunnerAnimationController {
@@ -52,7 +52,12 @@ public class RunnerController : RunnerAnimationController {
 
 
 
-	public void FixedUpdate() {
+	override protected void FixedUpdate() {
+		base.FixedUpdate();
+
+		if(IsDead)
+			return;
+
 		ApplyForce();
 	}
 
@@ -103,7 +108,7 @@ public class RunnerController : RunnerAnimationController {
 	private void ApplyForce(){
 		Vector3 move = Time.deltaTime * moveSpeed;
 
-		//OX
+		//OX Changing Tracks
 		move.x = Mathf.Min(Mathf.Abs(move.x), Mathf.Abs(moveDistance.x)) * Mathf.Sign(moveDistance.x);
 		moveDistance.x -= move.x;
 
@@ -111,7 +116,7 @@ public class RunnerController : RunnerAnimationController {
 			moveSpeed.x = 0;
 
 
-		//OY
+		//OY Jumping
 		move.y = Mathf.Min (move.y, moveDistance.y);
 		moveDistance.y -= move.y;
 
@@ -120,7 +125,7 @@ public class RunnerController : RunnerAnimationController {
 			moveDistance.y = 0;
 		}
 
-		//OZ
+		//OZ Running Forward
 		moveSpeed.z = Mathf.Min(moveSpeed.z + stats.acceleration * Time.deltaTime, stats.maxSpeed);
 			
 
@@ -131,7 +136,7 @@ public class RunnerController : RunnerAnimationController {
 
 	private bool IsInTurn {
 		get{
-			return moveSpeed.x != 0;
+			return moveSpeed.x != 0 || IsTurningLeft || IsTurningRight;
 		}
 	}
 
@@ -221,4 +226,46 @@ public class RunnerController : RunnerAnimationController {
 	}
 	
 	#endregion
+
+
+
+	public void TakeDamage(int damage){
+		stats.hitpoints -= damage;
+
+		if(ShouldDie)
+			Die();
+	}
+
+
+
+	private bool ShouldDie {
+		get{
+			return stats.hitpoints <= 0;
+		}
+	}
+
+
+
+	private void Die(){
+		IsDead = true;
+	}
+
+
+
+	public int Coins {
+		get{
+			return stats.coins;
+		}
+		set{
+			stats.coins = value;
+		}
+	}
+
+
+
+	public int Hitpoins {
+		get{
+			return stats.hitpoints;
+		}
+	}
 }

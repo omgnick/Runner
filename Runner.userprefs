@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Engine\LevelGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Engine\HTTPRequestManager.cs">
     <Files>
-      <File FileName="Assets\RunEngine.cs" Line="12" Column="34" />
-      <File FileName="Assets\Scripts\Engine\CharacterGenerator.cs" Line="27" Column="26" />
-      <File FileName="Assets\Scripts\Engine\LevelGenerator.cs" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\Engine\LevelObstacle.cs" Line="6" Column="26" />
+      <File FileName="Assets\Scripts\Engine\HTTPRequestManager.cs" Line="102" Column="6" />
+      <File FileName="Assets\Scripts\Engine\MiniJSON.cs" Line="1" Column="1" />
+      <File FileName="..\..\MMORTS\unity_mmorts\Assets\Scripts\Engine\RequestQueue.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Engine\MainMenuEngine.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Engine\EventListener.cs" Line="36" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

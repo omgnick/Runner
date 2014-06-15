@@ -3,11 +3,19 @@ using System.Collections;
 
 public class RunnerAnimationController : CachedBehaviour {
 
-	protected const string IS_RUNNING = "IsRunning";
-	protected const string IS_TURNING_LEFT = "IsTurningLeft";
-	protected const string IS_TURNING_RIGHT = "IsTurningRight";
-	protected const string IS_JUMPING = "IsJumping";
-	protected const string IS_SLIDING = "IsSliding";
+	protected float turnAnimationLength = 2.067f;
+
+	private const string IS_RUNNING = "IsRunning";
+	private const string IS_TURNING_LEFT = "IsTurningLeft";
+	private const string IS_TURNING_RIGHT = "IsTurningRight";
+	private const string IS_JUMPING = "IsJumping";
+	private const string IS_SLIDING = "IsSliding";
+	private const string IS_DEAD = "IsDead";
+	private const string COLLIDER_HEIGHT = "ColliderHeight";
+
+	private const string ANIMATION_STATE_TURNING_RIGHT = "Base Layer.TurningRight";
+	private const string ANIMATION_STATE_TURNING_LEFT = "Base Layer.TurningLeft";
+	private const string ANIMATION_STATE_JUMPING = "Jump.Jump";
 
 
 
@@ -62,7 +70,7 @@ public class RunnerAnimationController : CachedBehaviour {
 		}
 		
 		get{
-			return CachedAnimator.GetBool(IS_JUMPING);
+			return CachedAnimator.GetBool(IS_JUMPING) || IsCurrentAnimationState(ANIMATION_STATE_JUMPING);
 		}
 	}
 
@@ -76,5 +84,44 @@ public class RunnerAnimationController : CachedBehaviour {
 		get{
 			return CachedAnimator.GetBool(IS_SLIDING);
 		}
+	}
+
+
+
+	protected bool IsDead {
+		set {
+			CachedAnimator.SetBool(IS_DEAD, value);
+		}
+		
+		get{
+			return CachedAnimator.GetBool(IS_DEAD);
+		}
+	}
+
+
+
+	protected bool IsCurrentAnimationState(string name) {
+//		Debug.Log("NAME "+name+" HASH = "+Animator.StringToHash(name)+" nameHash = "+CachedAnimator.GetCurrentAnimatorStateInfo(0).nameHash);
+		return CachedAnimator.GetCurrentAnimatorStateInfo(0).nameHash == Animator.StringToHash(name);
+	}
+
+
+
+	private void ResetAnimatorSpeed(){
+		CachedAnimator.speed = 1f;
+	}
+
+
+
+	private void UpdateCollider(){
+		if(IsJumping){
+			CachedCapsuleCollider.height = CachedAnimator.GetFloat(COLLIDER_HEIGHT);
+		}
+	}
+
+
+
+	virtual protected void FixedUpdate(){
+		UpdateCollider();
 	}
 }

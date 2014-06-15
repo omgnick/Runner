@@ -11,7 +11,10 @@ public class LevelPrefab : CachedBehaviour {
 	public GameObject prefab;
 	public float outDistance;
 	public int tracksNumber;
-	public float trackLength;
+	public float cellWidth;
+	public float cellHeight;
+	public int maxNumberOfObstacles;
+	public GameObject[] obstaclesPrefabs;
 
 
 
@@ -22,5 +25,15 @@ public class LevelPrefab : CachedBehaviour {
 			return mainChar != null && 
 				outDistance < Vector3.Distance(mainChar.CachedTransform.position, CachedTransform.position);
 		}
+	}
+
+
+
+	public Vector3 GetWorldPositionByCell(Vector2 cell){
+
+		if(cell.x > tracksNumber / 2)
+			cell.x = cell.x - (tracksNumber / 2) * 2;
+
+		return CachedTransform.position + startPosition + (new Vector3(cell.x * cellWidth, 0, cell.y * cellHeight));
 	}
 }

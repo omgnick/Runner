@@ -1,0 +1,2 @@
+ALTER TABLE `users` CHANGE COLUMN `gold` `gold` INT NOT NULL DEFAULT 0;
+ALTER TABLE `users` CHANGE COLUMN `network_id` `network_id` CHAR(32) NOT NULL UNIQUE;
