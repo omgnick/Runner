@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class RunEngine : CachedBehaviour {
+public class RunEngine : MonoSingleton<RunEngine> {
 
 	private void Start () {
 		InitializeLevelGenerator();
@@ -50,7 +50,7 @@ public class RunEngine : CachedBehaviour {
 
 
 	private void InitializeHudPanel(CharacterStats stats){
-		HudPanel.Instance.SetCoinsNumber(stats.coins);
+		HudPanel.Instance.SetCoinsNumber(stats.gold);
 		HudPanel.Instance.SetLifesNumber(stats.hitpoints);
 	}
 
@@ -71,5 +71,23 @@ public class RunEngine : CachedBehaviour {
 		};
 		LevelObstaclesGenerator.Instance.CreateObstaclesPool();
 		LevelObstaclesGenerator.Instance.FillLevelPrefabs();
+	}
+
+
+
+	public void EndTheRun(){
+		RunnerController runner = CharacterGenerator.Instance.MainCharachter.GetComponent<RunnerController>();
+
+		HTTPRequestManager.Instance.AddRequest("regular_run_ended", new Hashtable(){
+			{"gold", runner.Coins}
+		});
+
+		Invoke("LoadMainMenu", 2f);
+	}
+
+
+
+	private void LoadMainMenu(){
+		Application.LoadLevel("MainMenu");
 	}
 }

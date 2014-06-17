@@ -11,7 +11,7 @@ class BaseModel {
         if(isset($this->data[$name]) && $this->data[$name] != $value)
             $this->changed_fields[$name] = $value;
 
-        $data[$name] = $value;
+        $this->data[$name] = $value;
     }
 
 
@@ -35,8 +35,11 @@ class BaseModel {
 
 
     public function SaveToDatabase(){
-        if(count($this->changed_fields) > 0)
-            Shards::$current_shard->InsertOrUpdate($this->changed_fields, static::GetTableName());
+        if(count($this->changed_fields) > 0){
+            $data = $this->changed_fields;
+            $data['id'] = $this->id;
+            Shards::$current_shard->InsertOrUpdate($data, static::GetTableName());
+        }
     }
 
 
@@ -50,11 +53,24 @@ class BaseModel {
 
         $result = $result->fetch_assoc();
         $instance = new static();
-
-        foreach($result as $key => $value)
-            $instance[$key] = $value;
+        $instance->SetData($result);
 
         return $instance;
+    }
+
+
+
+    public function SetField($name, $value){
+        if(isset($this->data[$name]) && $this->data[$name] != $value)
+            $this->changed_fields[$name] = $value;
+
+        $data[$name] = $value;
+    }
+
+
+
+    public function SetData($data){
+        $this->data = $data;
     }
 
 

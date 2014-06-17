@@ -46,13 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\Imported\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Imported\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Imported\FT_FreeSample\Script\Button.cs" />
      <Compile Include="Assets\Imported\Locomotion\Scripts\Locomotion.cs" />
-     <Compile Include="Assets\Imported\Mobile-Cartoony\Mobile-Cartoony\SupportingArtefacts\Scripts\ColoredGUISkinMobile.cs" />
-     <Compile Include="Assets\Imported\Mobile-Cartoony\Mobile-Cartoony\SupportingArtefacts\Scripts\DemoGuiSkinMobile.cs" />
      <Compile Include="Assets\Imported\MovementAnimsetProLite\Scripts\InputWalk.cs" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
@@ -227,11 +224,13 @@
      <Compile Include="Assets\Scripts\AnimationControllers\RunnerAnimationController.cs" />
      <Compile Include="Assets\Scripts\Config.cs" />
      <Compile Include="Assets\Scripts\Engine\CachedBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Engine\CameraController.cs" />
      <Compile Include="Assets\Scripts\Engine\CharacterGenerator.cs" />
      <Compile Include="Assets\Scripts\Engine\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\Engine\EventListener.cs" />
      <Compile Include="Assets\Scripts\Engine\HTTPRequestManager.cs" />
      <Compile Include="Assets\Scripts\Engine\HTTPResponseEvent.cs" />
+     <Compile Include="Assets\Scripts\Engine\LanguageManager.cs" />
      <Compile Include="Assets\Scripts\Engine\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\Engine\LevelObstaclesGenerator.cs" />
      <Compile Include="Assets\Scripts\Engine\LevelPrefab.cs" />
@@ -239,8 +238,12 @@
      <Compile Include="Assets\Scripts\Engine\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\Engine\MiniJsonHelper.cs" />
      <Compile Include="Assets\Scripts\Engine\MonoSingleton.cs" />
+     <Compile Include="Assets\Scripts\Engine\PlayerPreferences.cs" />
      <Compile Include="Assets\Scripts\Engine\RunEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\User.cs" />
+     <Compile Include="Assets\Scripts\GUI\BaseGuiElement.cs" />
      <Compile Include="Assets\Scripts\GUI\HudPanel.cs" />
+     <Compile Include="Assets\Scripts\GUI\MainMenuPanel.cs" />
      <Compile Include="Assets\Scripts\Inputs\RunTouchUserInput.cs" />
      <Compile Include="Assets\Scripts\Inputs\RunUserInput.cs" />
      <Compile Include="Assets\Scripts\ObjectControllers\RunnerController.cs" />
@@ -292,7 +295,7 @@
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
-     <None Include="Assets\Imported\Mobile-Cartoony\ReadMe.txt" />
+     <None Include="Assets\GUI\Textures\Mobile-Cartoony\ReadMe.txt" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
      <None Include="Assets\Imported\SciFi level 2\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />

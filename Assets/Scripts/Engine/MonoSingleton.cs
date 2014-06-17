@@ -42,6 +42,8 @@ public class SingletonContainer {
 					instance.name = "Singletons";
 				} else 
 					instance = obj.transform;
+
+				Object.DontDestroyOnLoad(instance);
 			}
 
 			return instance;

@@ -121,7 +121,7 @@ public class RunnerController : RunnerAnimationController {
 		moveDistance.y -= move.y;
 
 		if(IsJumpTopPoint) {
-			moveSpeed.y = Config.world_gravity;
+			moveSpeed.y = Config.worldGravity;
 			moveDistance.y = 0;
 		}
 
@@ -208,7 +208,7 @@ public class RunnerController : RunnerAnimationController {
 				moveDistance.y = 0;
 				CachedTransform.position = point.point;
 			} else if(IsInAir && !IsJumpLanding && point.normal.y < 0){
-				moveSpeed.y = -Config.world_gravity;
+				moveSpeed.y = -Config.worldGravity;
 				moveDistance.y = 0;
 			}
 
@@ -248,16 +248,17 @@ public class RunnerController : RunnerAnimationController {
 
 	private void Die(){
 		IsDead = true;
+		RunEngine.Instance.EndTheRun();
 	}
 
 
 
 	public int Coins {
 		get{
-			return stats.coins;
+			return stats.gold;
 		}
 		set{
-			stats.coins = value;
+			stats.gold = value;
 		}
 	}
 

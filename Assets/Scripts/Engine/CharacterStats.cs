@@ -11,6 +11,6 @@ public class CharacterStats {
 	public float turnDistance = 1f;
 	public int maxTurnsNumber = 1;
 	public int hitpoints = 3;
-	public int coins = 0;
+	public int gold = 0;
 
 }

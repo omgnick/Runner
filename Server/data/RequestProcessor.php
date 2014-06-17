@@ -57,6 +57,10 @@ class RequestProcessor {
             case 'login':
                 $this->Login();
                 break;
+            case 'regular_run_ended':
+                $this->SaveRegularRunResults();
+                break;
+
         }
     }
 
@@ -97,6 +101,15 @@ class RequestProcessor {
 
     private function IsValidMobileAuthKey(){
         $soc_info = SocialConfig::GetCurrentAPIData();
-        return $this->data['network_id'].$soc_info['api_secret'] == $this->data['auth_key'];
+        return md5($this->data['network_id'].$soc_info['api_secret']) == $this->data['auth_key'];
+    }
+
+
+
+    private function SaveRegularRunResults(){
+        $user = User::FindOrRegister($this->data['network_id']);
+        $user->gold += $this->data['gold'];
+        $user->SaveToDatabase();
+        Output::Add('user', $user->GetOutputData());
     }
 }

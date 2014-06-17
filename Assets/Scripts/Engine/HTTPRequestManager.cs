@@ -20,12 +20,20 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 
 				form.AddField("command", Command);
 
-				foreach(DictionaryEntry en in Parameters){
+				Hashtable parameters = Parameters;
+
+				if(PlayerPreferences.HasAuthData){
+					parameters["network_id"] = PlayerPreferences.NetworkID;
+					parameters["auth_key"] = PlayerPreferences.AuthKey;
+				}
+
+				foreach(DictionaryEntry en in parameters){
 					if(en.Value is byte[])
 						form.AddBinaryData(en.Key.ToString(), en.Value as byte[]);
 					else
 						form.AddField(en.Key.ToString(), en.Value.ToString());
 				}
+
 
 				form.AddField("sig", Signature);
 
@@ -55,12 +63,15 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 #endregion
 
 	private Queue<Request> requests = new Queue<Request>();
-	private EventListener<HTTPResponseEvent> eventListener = new EventListener<HTTPResponseEvent>();
+	private EventListener<HTTPResponseEvent> eventListener;
 
 
 
 	public EventListener<HTTPResponseEvent> EventListener{
 		get{
+			if(eventListener == null)
+				eventListener = new EventListener<HTTPResponseEvent>();
+
 			return eventListener;
 		}
 	}
@@ -95,6 +106,7 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 				if(!string.IsNullOrEmpty(response.error)){
 					Debug.LogError(response.error);
 				} else {
+					Debug.Log(response.text);
 					Hashtable data = response.text.hashtableFromJson();
 
 					foreach(string key in data.Keys)

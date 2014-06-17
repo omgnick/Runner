@@ -1,13 +1,66 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainMenuEngine : CachedBehaviour {
+public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 
 
 
 	public void Start () {
-		HTTPRequestManager.Instance.AddRequest("login", new Hashtable(){
-			{"device_id", "1"}
-		});
+		if(Config.ShouldInitialize){
+			Config.player = new User();
+
+			HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.RECIEVED_USER, 
+			                                                           Config.player.OnRecievedFromServer);
+			HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.RECIEVED_USER,
+			                                                           OnAuthorizationCompleted);
+
+			Hashtable loginRequestData = new Hashtable();
+
+			if(!PlayerPreferences.HasAuthData){
+				loginRequestData["device_id"] = SystemInfo.deviceUniqueIdentifier;
+				HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.AUTH_KEY, OnRecievedAuthKey);
+			}
+
+			HTTPRequestManager.Instance.AddRequest("login", loginRequestData);
+		}
 	}
+
+
+
+	private void OnRecievedAuthKey(HTTPResponseEvent ev){
+		if(!ev.data.ContainsKey("auth_key"))
+			return;
+
+		string auth_key = ev.data["auth_key"].ToString();
+
+		if(!string.IsNullOrEmpty(auth_key)){
+			PlayerPreferences.AuthKey = auth_key;
+
+			if(ev.data.ContainsKey("user")){
+				Hashtable user = ev.data["user"] as Hashtable;
+				PlayerPreferences.NetworkID = user["network_id"].ToString();
+			}
+		}
+
+	}
+
+
+
+	private void OnAuthorizationCompleted(HTTPResponseEvent ev){
+		HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.RECIEVED_USER,
+		                                                              OnAuthorizationCompleted);
+	}
+
+
+
+	public void ApplicationCloseRequest(){
+		Application.Quit();
+	}
+
+
+
+	public void StartRegularRun(){
+		Application.LoadLevel("Run");
+	}
+			                                                          
 }
