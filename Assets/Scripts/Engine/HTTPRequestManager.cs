@@ -109,8 +109,9 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 					Debug.Log(response.text);
 					Hashtable data = response.text.hashtableFromJson();
 
-					foreach(string key in data.Keys)
-						eventListener.DispatchEvent(key, new HTTPResponseEvent(data));
+					if(data != null)
+						foreach(string key in data.Keys)
+							eventListener.DispatchEvent(key, new HTTPResponseEvent(data));
 				}
 			}
 
@@ -126,7 +127,7 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 		Request request = new Request();
 
 		request.Command = command.ToLower();
-		request.Parameters = data;
+		request.Parameters = data ?? new Hashtable();
 
 		requests.Enqueue(request);
 	}

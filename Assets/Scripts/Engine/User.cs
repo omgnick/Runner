@@ -9,7 +9,7 @@ public class User {
 	private int hpLevel = 0;
 	private int speedLevel = 0;
 	private int gold = 0;
-
+	private string name = "PLAYER";
 
 
 	public void LoadFromHashtable(Hashtable data){
@@ -30,6 +30,9 @@ public class User {
 		
 		if(data.ContainsKey("gold"))
 			gold = int.Parse(data["gold"].ToString());
+
+		if(data.ContainsKey("name"))
+			name = data["name"].ToString();
 	}
 
 
@@ -60,6 +63,10 @@ public class User {
 		get{
 			return jumpLevel;
 		}
+
+		set{
+			jumpLevel = value;
+		}
 	}
 
 
@@ -67,6 +74,10 @@ public class User {
 	public int SpeedLevel {
 		get{
 			return speedLevel;
+		}
+
+		set{
+			speedLevel = value;
 		}
 	}
 
@@ -76,6 +87,9 @@ public class User {
 		get{
 			return gold;
 		}
+		set{
+			gold = value;
+		}
 	}
 
 
@@ -83,6 +97,30 @@ public class User {
 	public int HPLevel {
 		get{
 			return hpLevel;
+		}
+		set{
+			hpLevel = value;
+		}
+	}
+
+
+
+	public CharacterStats Stats {
+		get{
+			CharacterStats stats = new CharacterStats();
+			stats.jumpHeight += 0.2f * jumpLevel;
+			stats.maxSpeed += 3 * speedLevel;
+			stats.turnSpeed += 0.5f * speedLevel;
+			stats.hitpoints += hpLevel;
+			return stats;
+		}
+	}
+
+
+
+	public string Name{
+		get{
+			return name;
 		}
 	}
 }

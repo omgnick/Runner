@@ -1,0 +1,1 @@
+CREATE TABLE `tournaments` (`id` INT AUTO_INCREMENT PRIMARY KEY, `total_prize` INT DEFAULT 0, `end_time` INT NOT NULL);

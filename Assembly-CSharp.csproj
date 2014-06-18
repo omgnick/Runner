@@ -240,10 +240,16 @@
      <Compile Include="Assets\Scripts\Engine\MonoSingleton.cs" />
      <Compile Include="Assets\Scripts\Engine\PlayerPreferences.cs" />
      <Compile Include="Assets\Scripts\Engine\RunEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\TournamentRunEngine.cs" />
      <Compile Include="Assets\Scripts\Engine\User.cs" />
      <Compile Include="Assets\Scripts\GUI\BaseGuiElement.cs" />
+     <Compile Include="Assets\Scripts\GUI\ChangeNameMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\HudPanel.cs" />
      <Compile Include="Assets\Scripts\GUI\MainMenuPanel.cs" />
+     <Compile Include="Assets\Scripts\GUI\ShopMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\TournamentHudPanel.cs" />
+     <Compile Include="Assets\Scripts\GUI\TournamentItem.cs" />
+     <Compile Include="Assets\Scripts\GUI\TournamentMenu.cs" />
      <Compile Include="Assets\Scripts\Inputs\RunTouchUserInput.cs" />
      <Compile Include="Assets\Scripts\Inputs\RunUserInput.cs" />
      <Compile Include="Assets\Scripts\ObjectControllers\RunnerController.cs" />

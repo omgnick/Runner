@@ -1,0 +1,1 @@
+CREATE TABLE `tournament_users` (`network_id` CHAR(32) PRIMARY KEY, `gold_collected` INT NOT NULL, `user_name` VARCHAR(16) NOT NULL);

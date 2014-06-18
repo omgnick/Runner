@@ -7,6 +7,10 @@ public class MainMenuPanel : BaseGuiElement {
 	public UIButton shop;
 	public UIButton tournament;
 	public UIButton exit;
+	public UIButton changeName;
+	public ShopMenu shopMenu;
+	public TournamentMenu tournamentMenu;
+	public ChangeNameMenu changeNameMenu;
 
 
 	public void Start(){
@@ -14,6 +18,7 @@ public class MainMenuPanel : BaseGuiElement {
 		SetupButton(shop, "OnShop", LanguageManager.GetStringByKey("shop"));
 		SetupButton(tournament, "OnTournament", LanguageManager.GetStringByKey("tournament"));
 		SetupButton(exit, "OnExit", LanguageManager.GetStringByKey("exit"));
+		SetupButton(changeName, "OnChangeName", LanguageManager.GetStringByKey("change_name"));
 	}
 
 
@@ -25,18 +30,39 @@ public class MainMenuPanel : BaseGuiElement {
 
 
 	private void OnShop(){
-		Debug.Log("SHOP");
+		shopMenu.Show();
+		Hide ();
 	}
 
 
 
 	private void OnTournament(){
-		Debug.Log("TOURNAMENT");
+		tournamentMenu.Show();
+		Hide ();
 	}
 
 
 
 	private void OnExit(){
 		MainMenuEngine.Instance.ApplicationCloseRequest();
+	}
+
+
+
+	public void Hide(){
+		gameObject.SetActive(false);
+	}
+
+
+
+	public void Show(){
+		gameObject.SetActive(true);
+	}
+
+
+
+	private void OnChangeName(){
+		changeNameMenu.Show();;
+		Hide ();
 	}
 }

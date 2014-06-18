@@ -55,9 +55,6 @@ public class RunnerController : RunnerAnimationController {
 	override protected void FixedUpdate() {
 		base.FixedUpdate();
 
-		if(IsDead)
-			return;
-
 		ApplyForce();
 	}
 
@@ -120,14 +117,19 @@ public class RunnerController : RunnerAnimationController {
 		move.y = Mathf.Min (move.y, moveDistance.y);
 		moveDistance.y -= move.y;
 
-		if(IsJumpTopPoint) {
+		if(IsJumpTopPoint || (IsInAir && IsDead)) {
 			moveSpeed.y = Config.worldGravity;
 			moveDistance.y = 0;
 		}
 
 		//OZ Running Forward
 		moveSpeed.z = Mathf.Min(moveSpeed.z + stats.acceleration * Time.deltaTime, stats.maxSpeed);
-			
+
+		if(IsDead) {
+			move.x = 0;
+			move.z = 0;
+		}
+
 
 		CachedTransform.Translate(move);
 	}

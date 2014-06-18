@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 chdir("../db");
 
+require_once '../data/Debug.php';
 require_once 'DBConfig.php';
 require_once 'DatabaseConnection.php';
 require_once 'Shards.php';

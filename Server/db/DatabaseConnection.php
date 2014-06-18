@@ -51,7 +51,7 @@ class DatabaseConnection {
             $sql .= $where;
 
         if($limit)
-            $sql .= $limit;
+            $sql .= 'LIMIT '.$limit;
 
         return $this->Query($sql);
     }
@@ -101,7 +101,7 @@ class DatabaseConnection {
         }
 
         $sql .= $sql_fields.')'.$sql_values.')'.$sql_update;
-        $this->connection->Query($sql);
+        $this->Query($sql);
         return $this->connection->insert_id;
     }
 

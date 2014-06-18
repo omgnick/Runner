@@ -60,6 +60,24 @@ class RequestProcessor {
             case 'regular_run_ended':
                 $this->SaveRegularRunResults();
                 break;
+            case 'buy_jump':
+                $this->BuyJump();
+                break;
+            case 'buy_speed':
+                $this->BuySpeed();
+                break;
+            case 'buy_hp':
+                $this->BuyHP();
+                break;
+            case 'tournament_run_ended':
+                $this->SaveTournamentRunResults();
+                break;
+            case 'get_tournament_data':
+                $this->OutputTournament();
+                break;
+            case 'change_name':
+                $this->ChangeName();
+                break;
 
         }
     }
@@ -112,4 +130,83 @@ class RequestProcessor {
         $user->SaveToDatabase();
         Output::Add('user', $user->GetOutputData());
     }
+
+
+
+    private function SaveTournamentRunResults(){
+        $user = User::FindOrRegister($this->data['network_id']);
+        $shard = Shards::GetShardByIndex(0);
+        $shard->InsertOrUpdate(Array('network_id' => $user->network_id,
+            'gold_collected' => $this->data['gold'],
+            'user_name' => $user->name
+        ), 'tournament_users');
+
+        $shard->Query('UPDATE `tournaments` SET `total_prize` = total_prize + '.$this->data['gold'].' ORDER BY end_time DESC LIMIT 1');
+    }
+
+
+
+    private function BuyJump(){
+        $user = User::FindOrRegister($this->data['network_id']);
+
+        if($user->jump_level < 3 && $user->gold >= 100 + 100 * $user->jump_level){
+            $user->gold -= 100 + 100 * $user->jump_level;
+            $user->jump_level++;
+            $user->SaveToDatabase();
+            Output::Add('user', $user->GetOutputData());
+        }
+    }
+
+
+
+    private function BuySpeed(){
+        $user = User::FindOrRegister($this->data['network_id']);
+
+        if($user->speed_level < 3 && $user->gold >= 250 + 125 * $user->speed_level){
+            $user->gold -= 250 + 125 * $user->speed_level;
+            $user->speed_level++;
+            $user->SaveToDatabase();
+            Output::Add('user', $user->GetOutputData());
+        }
+    }
+
+
+
+    private function BuyHp(){
+        $user = User::FindOrRegister($this->data['network_id']);
+
+        if($user->hp_level < 3 && $user->gold >= 400 + 200 * $user->hp_level){
+            $user->gold -= 400 + 200 * $user->hp_level;
+            $user->hp_level++;
+            $user->SaveToDatabase();
+            Output::Add('user', $user->GetOutputData());
+        }
+    }
+
+
+
+    private function OutputTournament(){
+        $shard = Shards::GetShardByIndex(0);
+        $tournament_users = $shard->SelectQuery(Array('*'), 'tournament_users', $where = ' ORDER BY `gold_collected` DESC ', $limit = '5');
+        $tournament = $shard->SelectQuery(Array('*'), 'tournaments', $where = ' ORDER BY `end_time` DESC ', $limit = '1');
+
+        $prize_users = Array();
+
+        while($user = $tournament_users->fetch_assoc()){
+            $prize_users[] = $user;
+        }
+
+        Output::Add("tournament", $tournament->fetch_assoc());
+        Output::Add("tournament_users", $prize_users);
+    }
+
+
+
+    private function ChangeName(){
+        $user = User::FindOrRegister($this->data['network_id']);
+        $user->name = $this->data['changed_name'];
+        $user->SaveToDatabase();
+        Output::Add('user', $user->GetOutputData());
+    }
+
 }

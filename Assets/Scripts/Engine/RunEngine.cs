@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class RunEngine : MonoSingleton<RunEngine> {
 
-	private void Start () {
+	virtual protected void Start () {
 		InitializeLevelGenerator();
 
-		CharacterStats stats = new CharacterStats();
+		CharacterStats stats = Config.player.Stats;
 		stats.turnDistance = LevelGenerator.Instance.TrackLength;
 		stats.maxTurnsNumber = LevelGenerator.Instance.TracksNumber / 2;
 
@@ -19,7 +19,15 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
-	private void InitializeLevelGenerator(){
+	protected void DestroyOldGenerators(){
+		Destroy(LevelGenerator.Instance.CachedGameObject);
+		Destroy(CharacterGenerator.Instance.CachedGameObject);
+		Destroy (LevelObstaclesGenerator.Instance.CachedGameObject);
+	}
+
+
+
+	protected void InitializeLevelGenerator(){
 		List<string> prefabs = new List<string>() {"Prefabs/Levels/Industrial/SemiWalls"};
 		
 		LevelGenerator.Instance.LoadPrefabs(prefabs);
@@ -30,7 +38,7 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
-	private void InitializeCharacterController(CharacterStats stats){
+	protected void InitializeCharacterController(CharacterStats stats){
 		#if UNITY_EDITOR
 		ICharacterControllerInput input = RunUserInput.Instance;
 		#elif UNITY_ANDROID
@@ -42,21 +50,21 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
-	private void InitializeCameraController(){
+	protected void InitializeCameraController(){
 		CameraController.Instance.FollowMargin = new Vector3(0, 3, -5);
 		CameraController.Instance.FollowTarget = CharacterGenerator.Instance.MainCharachter.CachedTransform;
 	}
 
 
 
-	private void InitializeHudPanel(CharacterStats stats){
+	protected void InitializeHudPanel(CharacterStats stats){
 		HudPanel.Instance.SetCoinsNumber(stats.gold);
 		HudPanel.Instance.SetLifesNumber(stats.hitpoints);
 	}
 
 
 
-	private void InitializeLevelObstaclesGenerator(){
+	protected void InitializeLevelObstaclesGenerator(){
 		LevelObstaclesGenerator.Instance.ObstaclePresets = new List<ObstaclesPresetBase>(){
 			new IndustrialObstaclesPreset1(),
 			new IndustrialObstaclesPreset2(),
@@ -75,8 +83,10 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
-	public void EndTheRun(){
+	virtual public void EndTheRun(){
 		RunnerController runner = CharacterGenerator.Instance.MainCharachter.GetComponent<RunnerController>();
+
+		Config.player.Gold += runner.Coins;
 
 		HTTPRequestManager.Instance.AddRequest("regular_run_ended", new Hashtable(){
 			{"gold", runner.Coins}
@@ -87,7 +97,8 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
-	private void LoadMainMenu(){
+	protected void LoadMainMenu(){
+		DestroyOldGenerators();
 		Application.LoadLevel("MainMenu");
 	}
 }
