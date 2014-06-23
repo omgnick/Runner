@@ -228,10 +228,8 @@
      <Compile Include="Assets\Scripts\ObstaclesPresets\IndustrialObstaclesPreset9.cs" />
      <Compile Include="Assets\Scripts\ObstaclesPresets\ObstaclesPresetBase.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
-     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\NGUI\ReadMe - 3.6.2.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
-     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
@@ -240,9 +238,7 @@
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
-     <None Include="Assets\GUI\Textures\Mobile-Cartoony\ReadMe.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
-     <None Include="Assets\Standard Assets\Skyboxes\ skybox info.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
@@ -250,7 +246,6 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
-     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
