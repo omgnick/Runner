@@ -14,7 +14,6 @@ public class LevelPrefab : CachedBehaviour {
 	public float cellWidth;
 	public float cellHeight;
 	public int maxNumberOfObstacles;
-	public GameObject[] obstaclesPrefabs;
 
 
 

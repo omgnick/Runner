@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\MainMenuPanel.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Particles Packs\Assets\FT_MagicEffects_volume01\Script\DeadTime.js">
     <Files>
-      <File FileName="Assets\Scripts\Engine\RunEngine.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Engine\TournamentRunEngine.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Engine\LevelObstaclesGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ObjectControllers\RunnerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\MainMenuPanel.cs" Line="35" Column="3" />
+      <File FileName="..\Particles Packs\Assets\FT_MagicEffects_volume01\Script\DeadTime.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

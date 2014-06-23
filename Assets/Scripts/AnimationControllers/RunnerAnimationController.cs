@@ -101,7 +101,7 @@ public class RunnerAnimationController : CachedBehaviour {
 
 
 	protected bool IsCurrentAnimationState(string name) {
-//		Debug.Log("NAME "+name+" HASH = "+Animator.StringToHash(name)+" nameHash = "+CachedAnimator.GetCurrentAnimatorStateInfo(0).nameHash);
+
 		return CachedAnimator.GetCurrentAnimatorStateInfo(0).nameHash == Animator.StringToHash(name);
 	}
 

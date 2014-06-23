@@ -47,7 +47,6 @@ public class CameraController : MonoSingleton<CameraController> {
 			                    );
 			delta.x = FollowTarget.position.x - CachedTransform.position.x + FollowMargin.x;
 			CachedTransform.Translate(delta, FollowTarget);
-//			CachedTransform.LookAt(followTarget.position);
 		}
 	}
 
@@ -57,7 +56,6 @@ public class CameraController : MonoSingleton<CameraController> {
 		if(FollowTarget != null){
 			CachedTransform.position = followTarget.position;
 			CachedTransform.Translate(FollowMargin, FollowTarget);
-//			CachedTransform.LookAt(followTarget.position);	
 		}
 	}
 
