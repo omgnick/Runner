@@ -96,17 +96,17 @@ class RequestProcessor {
 
     private function MobileLogin(){
         $soc_info = SocialConfig::GetCurrentAPIData();
-
+        $create = false;
         if( $this->IsMobileUserRegistered() && $this->IsValidMobileAuthKey() ){
             $network_id = $this->data['network_id'];
         } else {
             $network_id = md5(uniqid($this->data['device_id']));
             $auth_key = md5($network_id.$soc_info['api_secret']);
-
+            $create = true;
             Output::Add('auth_key', $auth_key);
         }
 
-        Output::Add('user', User::FindOrRegister($network_id)->GetOutputData());
+        Output::Add('user', User::FindOrRegister($network_id, $create)->GetOutputData());
     }
 
 

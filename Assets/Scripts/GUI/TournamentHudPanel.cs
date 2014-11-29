@@ -18,7 +18,7 @@ public class TournamentHudPanel : HudPanel {
 				is_timer_enabled = false;
 			}
 
-			timer.text = (int)timeLeft / 60 + ((int)timeLeft % 60) < 10 ? ":0"+((int)timeLeft % 60) : ":" + ((int)timeLeft % 60);
+			timer.text = (int)timeLeft / 60 +  (((int)timeLeft % 60) < 10 ? ":0"+((int)timeLeft % 60) : ":" + ((int)timeLeft % 60));
 			timeLeft -= Time.deltaTime;
 		}
 

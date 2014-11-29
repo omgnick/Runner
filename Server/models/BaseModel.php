@@ -49,7 +49,7 @@ class BaseModel {
         $result = $shard->SelectAllByFields($fields, static::GetTableName());
 
         if(!$result)
-            return null;
+            return false;
 
         $result = $result->fetch_assoc();
         $instance = new static();
