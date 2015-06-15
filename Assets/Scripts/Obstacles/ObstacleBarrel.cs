@@ -36,6 +36,8 @@ public class ObstacleBarrel : ObstacleBase {
 
 			if(runner != null) {
 				runner.TakeDamage(1);
+				runner.Slow(0.8f);
+				CameraController.Instance.PlayCameraHit();
 				HudPanel.Instance.SetLifesNumber(runner.Hitpoins);
 			}
 		}

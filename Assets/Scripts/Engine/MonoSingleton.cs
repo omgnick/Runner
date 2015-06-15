@@ -24,6 +24,10 @@ public class MonoSingleton<T> : CachedBehaviour where T : CachedBehaviour {
 		}
 	}
 
+
+
+	public virtual void OnDestroy(){}
+
 }
 
 

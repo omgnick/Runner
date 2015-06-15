@@ -7,10 +7,8 @@ public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 
 	public void Start () {
 		if(Config.ShouldInitialize){
-			Config.player = new User();
+			Config.player = User.CreateFromLocalSave();
 
-			HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.RECIEVED_USER, 
-			                                                           Config.player.OnRecievedFromServer);
 			HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.RECIEVED_USER,
 			                                                           OnAuthorizationCompleted);
 
@@ -22,6 +20,8 @@ public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 			}
 
 			HTTPRequestManager.Instance.AddRequest("login", loginRequestData);
+
+			IAPController.Instance.PrepareForUse(null);
 		}
 	}
 
@@ -47,6 +47,28 @@ public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 
 
 	private void OnAuthorizationCompleted(HTTPResponseEvent ev){
+		Hashtable user = ev.data["user"] as Hashtable;
+
+		if(Config.player.LastUpdateTime <= int.Parse(user["last_update_time"].ToString())){
+			Config.player.LoadFromHashtable(user);
+			Config.player.Save();
+		} else {
+			Config.player.NetworkID = user["network_id"].ToString();
+
+			HTTPRequestManager.Instance.AddRequest("update_user", new Hashtable(){
+				{"gold", Config.player.Gold},
+				{"hp_level", Config.player.HPLevel},
+				{"speed_level", Config.player.SpeedLevel},
+				{"jump_level", Config.player.JumpLevel},
+				{"name", Config.player.Name},
+				{"last_update_time", Config.player.LastUpdateTime},
+			});
+		}
+	}
+
+
+
+	private void OnDestroy(){
 		HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.RECIEVED_USER,
 		                                                              OnAuthorizationCompleted);
 	}

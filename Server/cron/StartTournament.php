@@ -30,5 +30,5 @@ if($old_results !== false){
 }
 
 $shard->Query('TRUNCATE TABLE tournament_users');
-$shard->Insert(Array('end_time' => time() + 3600), 'tournaments');
+$shard->Insert(Array('end_time' => time() + 600), 'tournaments');
 

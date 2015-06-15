@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraController : MonoSingleton<CameraController> {
 
+	public Animation animations;
+
 	private Vector3 followMargin;
 	private Transform followTarget;
 
@@ -59,6 +61,12 @@ public class CameraController : MonoSingleton<CameraController> {
 			CachedTransform.Translate(FollowMargin, FollowTarget);
 //			CachedTransform.LookAt(followTarget.position);	
 		}
+	}
+
+
+
+	public void PlayCameraHit(){
+//		animations.Play("CameraHit");
 	}
 
 }

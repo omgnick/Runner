@@ -28,7 +28,11 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 	protected void InitializeLevelGenerator(){
-		List<string> prefabs = new List<string>() {"Prefabs/Levels/Industrial/SemiWalls"};
+		List<string> prefabs = new List<string>() {
+			"Prefabs/Levels/Industrial/SemiWalls",
+			"Prefabs/Levels/Industrial/SemiWalls2",
+			"Prefabs/Levels/Industrial/SemiWalls3",
+		};
 		
 		LevelGenerator.Instance.LoadPrefabs(prefabs);
 		LevelGenerator.Instance.MaxPrefabsNumber = 10;
@@ -83,10 +87,17 @@ public class RunEngine : MonoSingleton<RunEngine> {
 
 
 
+	public void OnRunnerDied(RunnerController runner){
+		HudPanel.Instance.ShowResults(runner.Coins);
+	}
+
+
+
 	virtual public void EndTheRun(){
 		RunnerController runner = CharacterGenerator.Instance.MainCharachter.GetComponent<RunnerController>();
 
 		Config.player.Gold += runner.Coins;
+		Config.player.Save();
 
 		HTTPRequestManager.Instance.AddRequest("regular_run_ended", new Hashtable(){
 			{"gold", runner.Coins}

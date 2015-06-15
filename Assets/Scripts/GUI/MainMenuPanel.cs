@@ -8,9 +8,11 @@ public class MainMenuPanel : BaseGuiElement {
 	public UIButton tournament;
 	public UIButton exit;
 	public UIButton changeName;
-	public ShopMenu shopMenu;
+	public ShopSelectionMenu shopSelectionMenu;
 	public TournamentMenu tournamentMenu;
 	public ChangeNameMenu changeNameMenu;
+	public UILabel network;
+
 
 
 	public void Start(){
@@ -19,6 +21,15 @@ public class MainMenuPanel : BaseGuiElement {
 		SetupButton(tournament, "OnTournament", LanguageManager.GetStringByKey("tournament"));
 		SetupButton(exit, "OnExit", LanguageManager.GetStringByKey("exit"));
 		SetupButton(changeName, "OnChangeName", LanguageManager.GetStringByKey("change_name"));
+
+		Config.dispatcher.AddEventListener(ConfigUpdateEvent.IsOfflineUpdated, OnOfflineStatusChanged);
+		UpdateNetworkLabel();
+	}
+
+
+
+	private void OnDestroy(){
+		Config.dispatcher.RemoveEventListener(ConfigUpdateEvent.IsOfflineUpdated, OnOfflineStatusChanged);
 	}
 
 
@@ -30,7 +41,7 @@ public class MainMenuPanel : BaseGuiElement {
 
 
 	private void OnShop(){
-		shopMenu.Show();
+		shopSelectionMenu.Show();
 		Hide ();
 	}
 
@@ -64,5 +75,26 @@ public class MainMenuPanel : BaseGuiElement {
 	private void OnChangeName(){
 		changeNameMenu.Show();;
 		Hide ();
+	}
+
+
+
+	private void OnOfflineStatusChanged(ConfigUpdateEvent ev){
+		bool isOnline = !ev.GetNewValue<bool>();
+		tournament.enabled = isOnline;
+
+		if(tournamentMenu.IsOpened && !isOnline){
+			tournamentMenu.Hide();
+			Show();
+		}
+
+		UpdateNetworkLabel();
+	}
+
+
+
+	private void UpdateNetworkLabel(){
+		network.text = LanguageManager.GetStringByKey(Config.IsOffline ? "network_no" : "network_ok");
+		network.color = Config.IsOffline ? Color.red : Color.green;
 	}
 }

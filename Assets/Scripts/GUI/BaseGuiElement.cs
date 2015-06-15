@@ -13,4 +13,11 @@ public class BaseGuiElement : CachedBehaviour {
 			label.text = text;
 		}
 	}
+
+
+
+	public void SetupButton(UIButton button, string callback){
+		button.onClick.Clear();
+		button.onClick.Add(new EventDelegate(this, callback));
+	}
 }

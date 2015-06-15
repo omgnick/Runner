@@ -15,23 +15,36 @@ public class TournamentMenu : BaseGuiElement {
 	public UILabel resultsTitle;
 	public TournamentItem[] tournamentItems;
 	public MainMenuPanel mainMenu;
+	public UILabel tournamentEndsIn;
 	private Hashtable tournamentData;
 	private List<Hashtable> tournamentUsersData;
+	private int tournamentEndTime;
+	private int lastUpdateTime;
+	private int updateInterval = 10;
+
 
 
 	public void Refresh(){
-		HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.TOURNAMENT_DATA, 
-		                                                           OnTournamentDataRecieved);
-		HTTPRequestManager.Instance.AddRequest("get_tournament_data", null);
-
 		tournamentDescription.text = LanguageManager.GetStringByKey("tournament_description");
 		tournamentTitle.text = LanguageManager.GetStringByKey("tournament_title");
 		resultsTitle.text = LanguageManager.GetStringByKey("results_title");
+
 		
 		SetupButton(back, "OnBack", LanguageManager.GetStringByKey("back"));
 		SetupButton(results, "OnResults", LanguageManager.GetStringByKey("results"));
 		SetupButton(run, "OnRun", LanguageManager.GetStringByKey("run"));
 		SetupButton(rules, "OnRules", LanguageManager.GetStringByKey("rules"));
+	}
+
+
+
+	private void RequestTournamentData() {
+		lastUpdateTime = HTTPRequestManager.Instance.ServerTime;
+		
+		HTTPRequestManager.Instance.EventListener.AddEventListener(HTTPResponseEvent.TOURNAMENT_DATA, 
+		                                                           OnTournamentDataRecieved);
+		HTTPRequestManager.Instance.AddRequest("get_tournament_data", null);
+
 	}
 
 
@@ -100,7 +113,9 @@ public class TournamentMenu : BaseGuiElement {
 		                                                           OnTournamentDataRecieved);
 		Hashtable data = ev.data;
 		tournamentData = data["tournament"] as Hashtable;
-		ArrayList list =	data["tournament_users"] as ArrayList;
+		ArrayList list = data["tournament_users"] as ArrayList;
+		//TODO: add server time
+		tournamentEndTime = int.Parse(tournamentData["end_time"].ToString());
 
 		tournamentUsersData = new List<Hashtable>();
 
@@ -124,4 +139,48 @@ public class TournamentMenu : BaseGuiElement {
 		}
 	}
 
+
+
+	public void Update(){
+		tournamentEndsIn.text = TimeLeftString;
+
+		if(ShouldRequestTournamentData)
+			RequestTournamentData();
+	}
+
+
+
+	private string TimeLeftString {
+		get{
+			return LanguageManager.GetStringByKey("tournament_end_in") + 
+				(int)TimeLeft / 60 + 
+					(((int)TimeLeft % 60) < 10 ? ":0"+((int)TimeLeft % 60) : ":" + ((int)TimeLeft % 60));
+		}
+	}
+
+
+
+	private int TimeLeft {
+		get{
+			return System.Convert.ToInt32(Mathf.Max(0f, tournamentEndTime - HTTPRequestManager.Instance.ServerTime));
+		}
+	}
+
+
+
+	private bool ShouldRequestTournamentData{
+		get{
+			return TimeLeft <= 0 && !HTTPRequestManager.Instance.IsInvoking("get_tournament_data") && 
+				lastUpdateTime + updateInterval < HTTPRequestManager.Instance.ServerTime;
+		}
+	}
+
+
+
+
+	public bool IsOpened {
+		get{
+			return gameObject.activeSelf;
+		}
+	}
 }

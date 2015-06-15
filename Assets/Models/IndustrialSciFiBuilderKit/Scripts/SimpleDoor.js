@@ -46,16 +46,16 @@ function OnTriggerExit (other : Collider){
 }
 
 function OpenDoor () {
-	audio.PlayOneShot (doorOpenSound) ;
+	GetComponent.<AudioSource>().PlayOneShot (doorOpenSound) ;
 	doorIsOpen = true ;
-	animation.PlayQueued ("dooropen") ;
+	GetComponent.<Animation>().PlayQueued ("dooropen") ;
 }
 
 function ShutDoor () {
-	audio.PlayOneShot (doorCloseSound) ;
+	GetComponent.<AudioSource>().PlayOneShot (doorCloseSound) ;
 	doorIsOpen = false ;
-	animation.PlayQueued  ("doorclose") ;
-	animation.PlayQueued  ("dooridle") ;
+	GetComponent.<Animation>().PlayQueued  ("doorclose") ;
+	GetComponent.<Animation>().PlayQueued  ("dooridle") ;
 }
 
 @script RequireComponent (AudioSource)

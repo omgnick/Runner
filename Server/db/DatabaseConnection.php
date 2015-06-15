@@ -48,10 +48,10 @@ class DatabaseConnection {
         $sql .= ' FROM '.$table;
 
         if($where)
-            $sql .= $where;
+            $sql .= ' '.$where;
 
         if($limit)
-            $sql .= 'LIMIT '.$limit;
+            $sql .= ' LIMIT '.$limit;
 
         return $this->Query($sql);
     }
@@ -66,7 +66,7 @@ class DatabaseConnection {
                 $where = ' WHERE `'.$field."`='".$this->connection->real_escape_string($value)."'";
                 $first = false;
             } else {
-                $where = ' AND `'.$field."`='".$this->connection->real_escape_string($value)."'";
+                $where .= ' AND `'.$field."`='".$this->connection->real_escape_string($value)."'";
             }
         }
 
@@ -101,6 +101,7 @@ class DatabaseConnection {
         }
 
         $sql .= $sql_fields.')'.$sql_values.')'.$sql_update;
+
         $this->Query($sql);
         return $this->connection->insert_id;
     }

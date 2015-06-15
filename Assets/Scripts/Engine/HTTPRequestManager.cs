@@ -37,6 +37,9 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 
 				form.AddField("sig", Signature);
 
+				//form.headers["content-type"] = "application/x-www-form-urlencoded";
+				
+
 				return form;
 			}
 		}
@@ -62,9 +65,11 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 	}
 #endregion
 
-	private Queue<Request> requests = new Queue<Request>();
+	private List<Request> requests = new List<Request>();
 	private EventListener<HTTPResponseEvent> eventListener;
-
+	//TODO: put it into TimeManager
+	private int serverTime;
+	
 
 
 	public EventListener<HTTPResponseEvent> EventListener{
@@ -80,7 +85,7 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 
 	public string RequestURL {
 		get{
-			return "http://www.runner.com";
+			return "http://192.168.1.33";
 		}
 	}
 
@@ -97,26 +102,43 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 		while(true){
 
 			if(requests.Count > 0){
-				Request request = requests.Dequeue();
+				Request request = requests[0];
+
+				Debug.Log("[WWW Processing] "+RequestURL);
 
 				WWW response = new WWW(RequestURL, request.Form);
-
+				
 				yield return response;
 
 				if(!string.IsNullOrEmpty(response.error)){
-					Debug.LogError(response.error);
+					Debug.Log("[WWW Error] " + response.error);
+
+					Config.IsOffline = true;
+
 				} else {
-					Debug.Log(response.text);
+
+					Config.IsOffline = false;
+
+					Debug.Log("[WWW Response] " + response.text);
 					Hashtable data = response.text.hashtableFromJson();
 
-					if(data != null)
-						foreach(string key in data.Keys)
+					if(data != null && data.ContainsKey("permanent")){
+						Hashtable permanent = data["permanent"] as Hashtable;
+						serverTime = Mathf.FloorToInt(int.Parse(permanent["time"].ToString()) - Time.realtimeSinceStartup);
+					}
+
+					if(data != null){
+						foreach(string key in data.Keys){
 							eventListener.DispatchEvent(key, new HTTPResponseEvent(data));
+						}
+					}
 				}
-			}
-
-
-			yield return new WaitForSeconds(0.1f);
+			
+				requests.RemoveAt(0);
+				yield return new WaitForEndOfFrame();
+				
+			} else 
+				yield return new WaitForEndOfFrame();
 		}
 
 	}
@@ -129,6 +151,20 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 		request.Command = command.ToLower();
 		request.Parameters = data ?? new Hashtable();
 
-		requests.Enqueue(request);
+		requests.Add(request);
+	}
+
+
+
+	public int ServerTime {
+		get{
+			return serverTime + (int)Time.realtimeSinceStartup;
+		}
+	}
+
+
+
+	public bool IsInQueue(string command){
+		return requests.Find( r => r.Command == command) != null;
 	}
 }

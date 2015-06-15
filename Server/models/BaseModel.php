@@ -52,6 +52,10 @@ class BaseModel {
             return false;
 
         $result = $result->fetch_assoc();
+
+        if($result === null)
+            return false;
+
         $instance = new static();
         $instance->SetData($result);
 

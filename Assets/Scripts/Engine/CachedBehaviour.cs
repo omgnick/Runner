@@ -27,7 +27,7 @@ public class CachedBehaviour : MonoBehaviour {
 	public Rigidbody CachedRigidbody {
 		get {
 			if(cachedRigidbody == null)
-				cachedRigidbody = rigidbody;
+				cachedRigidbody = GetComponent<Rigidbody>();
 
 			return cachedRigidbody;
 		}
@@ -38,7 +38,7 @@ public class CachedBehaviour : MonoBehaviour {
 	public Collider CachedCollider {
 		get {
 			if(cachedCollider == null)
-				cachedCollider = collider;
+				cachedCollider = GetComponent<Collider>();
 
 			return cachedCollider;
 		}

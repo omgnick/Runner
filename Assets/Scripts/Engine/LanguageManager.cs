@@ -25,6 +25,19 @@ public class LanguageManager {
 				{"shop", "Shop"},
 				{"tournament", "Tournament"},
 				{"exit", "Exit"},
+				{"back", "Back"},
+				{"jump", "Jump"},
+				{"speed", "Speed"},
+				{"hp", "Lifes"},
+				{"tournament_description", "Follow the race. You will have 3 minutes, gather as quickly as many coins. "+
+					"The collected coins during the race go to the prize pool. Players with the best results get the " +
+					"coins of the prize pool at the end of the tournament. "},
+				{"tournament_title", "Prize Pool"},
+				{"results_title", "Best Results"},
+				{"results", "Results"},
+				{"rules", "Rules"},
+				{"change_name", "Change Name"},
+				{"tournament_end_in", "Tournament ends in: "}
 			}
 		},
 
@@ -44,7 +57,20 @@ public class LanguageManager {
 				{"results_title", "Кращі результати"},
 				{"results", "Результати"},
 				{"rules", "Правила"},
-				{"change_name", "Змінити ім'я"}
+				{"change_name", "Змінити ім'я"},
+				{"tournament_end_in", "Турнір закінчиться через: "},
+				{"network_ok", "Зв'язок є"},
+				{"network_no", "Зв'язку не має"},
+				{"run_results_title", "Результати"},
+				{"take_gold", "Забрати"},
+				{"gold_small", "Гірсть золота"},
+				{"gold_medium", "Купа золота"},
+				{"gold_large", "Величезна купа золота"},
+				{"gold_shop_button_title", "ЗОЛОТО"},
+				{"buy", "КУПИТИ"},
+				{"gold_item_price", "Ціна: {0}"},
+				{"gold_item_reward", "ЗОЛОТО: {0}"},
+				{"skills_shop_button_title", "НАВИЧКИ"}
 			}
 		},
 	};

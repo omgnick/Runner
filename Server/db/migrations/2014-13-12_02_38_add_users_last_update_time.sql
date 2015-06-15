@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD COLUMN `last_update_time` INT NOT NULL DEFAULT 0

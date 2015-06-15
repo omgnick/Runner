@@ -10,6 +10,8 @@ public class User {
 	private int speedLevel = 0;
 	private int gold = 0;
 	private string name = "PLAYER";
+	private int lastUpdateTime;
+
 
 
 	public void LoadFromHashtable(Hashtable data){
@@ -37,8 +39,41 @@ public class User {
 
 
 
-	public void OnRecievedFromServer(HTTPResponseEvent ev){
-		LoadFromHashtable(ev.data["user"] as Hashtable);
+	public static User CreateFromLocalSave(){
+		User user = new User();
+
+		if(PlayerPrefs.HasKey("jump_level"))
+			user.jumpLevel = PlayerPrefs.GetInt("jump_level");
+
+		if(PlayerPrefs.HasKey("hp_level"))
+			user.hpLevel = PlayerPrefs.GetInt("hp_level");
+
+		if(PlayerPrefs.HasKey("speed_level"))
+			user.speedLevel = PlayerPrefs.GetInt("speed_level");
+
+		if(PlayerPrefs.HasKey("gold"))
+			user.gold = PlayerPrefs.GetInt("gold");
+
+		if(PlayerPrefs.HasKey("name"))
+			user.name = PlayerPrefs.GetString("name");
+
+		if(PlayerPrefs.HasKey("last_update_time"))
+			user.lastUpdateTime = PlayerPrefs.GetInt("last_update_time");
+
+		return user;
+	}
+
+
+
+	public void Save(){
+		PlayerPrefs.SetInt("jump_level", jumpLevel);
+		PlayerPrefs.SetInt("hp_level", hpLevel);
+		PlayerPrefs.SetInt("speed_level", speedLevel);
+		PlayerPrefs.SetInt("gold", gold);
+		PlayerPrefs.SetString("name", name);
+
+		PlayerPrefs.SetInt("last_update_time",
+		                   Config.IsOffline ? ++lastUpdateTime : HTTPRequestManager.Instance.ServerTime);
 	}
 
 
@@ -46,6 +81,10 @@ public class User {
 	public string NetworkID{
 		get{
 			return networkId;
+		}
+
+		set{
+			networkId = value;
 		}
 	}
 
@@ -121,6 +160,18 @@ public class User {
 	public string Name{
 		get{
 			return name;
+		}
+	}
+
+
+
+	public int LastUpdateTime{
+		get{
+			return lastUpdateTime;
+		}
+
+		set{
+			lastUpdateTime = value;
 		}
 	}
 }

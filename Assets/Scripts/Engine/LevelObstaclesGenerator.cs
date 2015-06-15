@@ -67,7 +67,7 @@ public class LevelObstaclesGenerator : MonoSingleton<LevelObstaclesGenerator> {
 
 
 	public bool TryFillLevelPrefab(){
-		if(usedObstacles.Count <= PresetsPoolSize){
+		if(usedObstacles.Count <= PresetsPoolSize && levelPrefabsToFill.Count > 0){
 
 			ObstaclesPresetBase preset = GetRandomPreset();
 			LevelPrefab prefab = levelPrefabsToFill.Dequeue();

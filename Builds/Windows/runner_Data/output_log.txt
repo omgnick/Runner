@@ -1,0 +1,53 @@
+Initialize engine version: 4.5.0f6 (fd4616464986)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dumx.dll 9.18.13.1106]
+    Renderer: NVIDIA GeForce GTX 260
+    Vendor:   NVIDIA
+    VRAM:     869 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.477 seconds
+desktop: 1680x1050 59Hz; virtual: 1680x1050 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\MyProjects\Runner\Builds\Windows\runner_Data\Managed\System.Core.dll (this message is harmless)
+[WWW Processing] http://www.runner.project
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unsupported encoding: 'windows-1251'
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+[WWW Response] {"user":{"id":"2","network_id":"a10022be78f9d45e5c86f0a9a5e2cec5","gold":"410","jump_level":"0","speed_level":"3","hp_level":"3","name":"dmitry","last_update_time":"1418454672"},"permanent":{"time":1418458390}}
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unsupported encoding: 'windows-1251'
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+[WWW Processing] http://www.runner.project
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unsupported encoding: 'windows-1251'
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+[WWW Response] {"user":{"id":"2","network_id":"a10022be78f9d45e5c86f0a9a5e2cec5","gold":"410","jump_level":"0","speed_level":"3","hp_level":"3","name":"dmitry","last_update_time":1418454785},"permanent":{"time":1418458390}}
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unsupported encoding: 'windows-1251'
+ 
+(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

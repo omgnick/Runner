@@ -14,7 +14,7 @@ public class ShopMenu : BaseGuiElement {
 	public UILabel jumpLabel;
 	public UILabel speedLabel;
 	public UILabel hpLabel;
-	public MainMenuPanel mainMenuPanel;
+	public ShopSelectionMenu shopSelectionMenu;
 
 
 
@@ -28,7 +28,7 @@ public class ShopMenu : BaseGuiElement {
 
 
 	private void OnBack(){
-		mainMenuPanel.Show();
+		shopSelectionMenu.Show();
 		Hide();
 	}
 
@@ -109,6 +109,7 @@ public class ShopMenu : BaseGuiElement {
 		HTTPRequestManager.Instance.AddRequest("buy_jump", null);
 		Config.player.Gold -= 100 + 100 * Config.player.JumpLevel;
 		Config.player.JumpLevel++;
+		Config.player.Save();
 		Refresh();
 	}
 
@@ -118,6 +119,7 @@ public class ShopMenu : BaseGuiElement {
 		HTTPRequestManager.Instance.AddRequest("buy_speed", null);
 		Config.player.Gold -= 250 + 125 * Config.player.SpeedLevel;
 		Config.player.SpeedLevel++;
+		Config.player.Save();
 		Refresh();
 	}
 
@@ -127,6 +129,7 @@ public class ShopMenu : BaseGuiElement {
 		HTTPRequestManager.Instance.AddRequest("buy_hp", null);
 		Config.player.Gold -= 400 + 200 * Config.player.HPLevel;
 		Config.player.HPLevel++;
+		Config.player.Save ();
 		Refresh();
 	}
 }

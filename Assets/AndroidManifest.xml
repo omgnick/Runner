@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.unity3d.player" android:installLocation="preferExternal" android:theme="@android:style/Theme.NoTitleBar" android:versionCode="1" android:versionName="1.0">
+    <compatible-screens>
+            <!-- all normal size screens except ldpi/mdpi -->
+            <screen android:screenSize="normal" android:screenDensity="213"/>
+            <screen android:screenSize="normal" android:screenDensity="hdpi" />
+            <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+            <screen android:screenSize="normal" android:screenDensity="480" />
+            <screen android:screenSize="normal" android:screenDensity="640" />
+            <!-- all large size screens -->
+            <screen android:screenSize="large" android:screenDensity="ldpi"/>
+            <screen android:screenSize="large" android:screenDensity="mdpi"/>
+            <screen android:screenSize="large" android:screenDensity="213"/>
+            <screen android:screenSize="large" android:screenDensity="hdpi" />
+            <screen android:screenSize="large" android:screenDensity="xhdpi" />
+            <screen android:screenSize="large" android:screenDensity="480" />
+            <screen android:screenSize="large" android:screenDensity="640" />
+            <!-- all xlarge size screens -->
+            <screen android:screenSize="xlarge" android:screenDensity="ldpi"/>
+            <screen android:screenSize="xlarge" android:screenDensity="mdpi"/>
+            <screen android:screenSize="xlarge" android:screenDensity="213"/>
+            <screen android:screenSize="xlarge" android:screenDensity="hdpi" />
+            <screen android:screenSize="xlarge" android:screenDensity="xhdpi" />
+            <screen android:screenSize="xlarge" android:screenDensity="480" />
+            <screen android:screenSize="xlarge" android:screenDensity="640" />
+    </compatible-screens>
+    <application android:icon="@drawable/app_icon" android:label="@string/app_name" android:debuggable="true">
+        <activity android:name="com.onevcat.uniwebview.AndroidPlugin" android:label="@string/app_name" android:screenOrientation="sensorLandscape" android:launchMode="singleInstance" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+            <meta-data android:name="android.app.lib_name" android:value="unity" />
+            <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+        </activity>
+        <activity android:name="com.prime31.EtceteraProxyActivity" />
+        <activity android:name="com.prime31.WebViewActivity" android:configChanges="orientation" />
+        <activity android:name="com.prime31.P31VideoPlayerActivity" android:configChanges="keyboard|keyboardHidden|orientation" />
+        <receiver android:name="com.prime31.AlarmManagerReceiver" />
+        <activity android:name="com.prime31.GoogleIABProxyActivity" android:screenOrientation="sensorLandscape" android:configChanges="orientation" />
+        <activity android:name="com.facebook.LoginActivity" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 862112123851761" />
+        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\ 62485864760" />
+        <meta-data android:name="com.google.android.gms.appstate.APP_ID" android:value="\ 62485864760" />
+        <meta-data android:name="com.prime31.PlayGameServicesPlugin" android:value="UnityPlayerActivityProxy" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.prime31.FacebookPlugin" android:value="UnityPlayerActivityProxy" />
+        <meta-data android:name="APP_NAME" android:value="com.ilogos.starbattle" />
+        <meta-data android:name="ADX_CLIENT_ID" android:value="socialquantum456789sc" />
+        <meta-data android:name="com.google.android.gms.version"
+                   android:value="@integer/google_play_services_version" />
+        <meta-data android:name="USEQASERVER" android:value="ON" />
+        <!-- Android GCM Plugin -->
+        <!-- Rewite app package name! -->
+        <receiver android:name="com.kskkbys.unitygcmplugin.UnityGCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.ilogos.starbattle" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.kskkbys.unitygcmplugin.UnityGCMIntentService" />
+        <!-- Android GCM Plugin -->
+        
+        
+        
+        <!-- FuseAPI -->
+
+        <activity
+            android:name="com.fusepowered.fuseactivities.FuseApiMoregamesBrowser"
+            android:label="FuseApiMoregamesBrowser">
+            <intent-filter>
+                <action android:name="com.fusepowered.fuseactivities.FuseApiMoregamesBrowser" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>		
+		
+
+
+        <activity
+            android:name="com.fusepowered.m2.mobileads.M2Activity"
+            android:configChanges="keyboardHidden|screenSize" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.m2.mobileads.M2RActivity"
+            android:configChanges="keyboardHidden|screenSize" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.m2.common.M2Browser"
+            android:configChanges="keyboardHidden|screenSize" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.m2.mobileads.M2RvpActivity"
+            android:configChanges="keyboardHidden|screenSize" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.m1.android.MMActivity"
+            android:configChanges="keyboardHidden|keyboard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.m1.android.VideoPlayer"
+            android:configChanges="keyboardHidden|keyboard" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.u1.U1InterstitialActivity"
+            android:configChanges="keyboardHidden|screenLayout|screenSize|smallestScreenSize"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.vungle.sdk.VungleAdvert"
+            android:configChanges="keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:screenOrientation="landscape" />
+
+        <service android:name="com.vungle.sdk.VungleIntentService" />
+
+        <activity
+            android:name="com.fusepowered.ads.adapters.FuseInterstitialActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.l1.AdActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:hardwareAccelerated="true" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.l1.AdBrowserActivity" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.l1.PlayerActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:hardwareAccelerated="true" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.ac.ACOActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.ac.ACFActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.ac.ACBActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.ads.adapters.LRActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.ads.adapters.MRaidActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.ads.adapters.MRaidVideoActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.sa.android.publish.list3d.List3DActivity"
+            android:theme="@android:style/Theme" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.sa.android.publish.AppWallActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="keyboardHidden|screenSize" android:screenOrientation="landscape" />
+        <activity
+            android:name="com.fusepowered.as.view.ASVastInterstitialActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.fusepowered.as.view.ASWebviewInterstitialActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" android:screenOrientation="landscape"/>
+        <activity
+			android:exported="false" android:name="com.fusepowered.ap.MainActivity"
+            android:configChanges="screenSize"
+            android:theme="@android:style/Theme.Translucent" android:screenOrientation="landscape" />
+        <activity
+			android:name="com.fusepowered.ap.BrowserActivity"
+            android:configChanges="screenSize" android:screenOrientation="landscape" />
+        <activity
+			android:name="com.fusepowered.ap.VDActivity"
+            android:configChanges="screenSize" android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+	    <activity
+			android:name="com.fusepowered.al.ALInterstitialActivity"
+			android:configChanges="screenSize" android:screenOrientation="landscape" />
+	    <activity
+			android:name="com.fusepowered.al.ALConfirmationActivity"
+			android:configChanges="screenSize" android:screenOrientation="landscape" />
+        <activity
+			android:name="com.fusepowered.im.androidsdk.IMBrowserActivity"
+			android:configChanges="keyboardHidden|keyboard|smallestScreenSize|screenSize"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:hardwareAccelerated="true" android:screenOrientation="landscape" />
+    <!-- end -->
+    </application>
+    <!-- Android GCM Plugin -->
+    <!-- Rewite app package name! -->
+    <permission android:name="com.ilogos.starbattle.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.ilogos.starbattle.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> GCM plugin -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Android GCM Plugin -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>

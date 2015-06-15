@@ -10,10 +10,12 @@ class User extends BaseModel {
         $user = User::FindByFields(Array('network_id' => $network_id));
 
 
-        if($create) {
+        if($create || !$user) {
+            Debug::ServerLog("CREATING NEW USER");
             $user = User::Create(Array(
                     'network_id' => $network_id,
-                    'gold' => 0
+                    'gold' => 0,
+                    'last_update_time' => 0,
                 ), $shard
             );
         }

@@ -240,6 +240,12 @@ public class RunnerController : RunnerAnimationController {
 
 
 
+	public void Slow(float amount){
+		moveSpeed.z -= moveSpeed.z * amount;
+	}
+
+
+
 	private bool ShouldDie {
 		get{
 			return stats.hitpoints <= 0;
@@ -251,6 +257,7 @@ public class RunnerController : RunnerAnimationController {
 	private void Die(){
 		IsDead = true;
 		RunEngine.Instance.EndTheRun();
+		//RunEngine.Instance.OnRunnerDied(this);
 	}
 
 

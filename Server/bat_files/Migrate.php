@@ -12,7 +12,10 @@ $migrations_table_name = 'migrations';
 //$names = preg_replace("/.*\//", '', $files);
 chdir('migrations');
 $files = glob("*.sql");
-
+$dir = __DIR__;
+var_dump($files);
+var_dump($dir);
+chdir('..'); chdir('..');
 $shards_number = DBConfig::GetShardsNumber();
 
 for($i = 0; $i < $shards_number; $i++){
@@ -34,8 +37,8 @@ for($i = 0; $i < $shards_number; $i++){
         if(!in_array($file, $old_migrations)){
             echo 'Database: '.$shard->connection_info['db'].' Migration: '.$file."\n";
 
-            $f = fopen($file, 'r');
-            $sql = fread($f, filesize($file));
+            $f = fopen("db/migrations/".$file, 'r');
+            $sql = fread($f, filesize("db/migrations/".$file));
             fclose($f);
 
             if(!$shard->connection->multi_query($sql))
@@ -44,7 +47,7 @@ for($i = 0; $i < $shards_number; $i++){
                 do {
                     if ($result = $shard->connection->store_result())
                         $result->free();
-                } while ($shard->connection->next_result());
+                } while ( $shard->connection->more_result() && $shard->connection->next_result());
 
                 $executed_migrations[] = $file;
             }
