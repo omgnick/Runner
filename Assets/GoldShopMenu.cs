@@ -8,6 +8,7 @@ public class GoldShopMenu : BaseGuiElement {
 	public UIGrid grid;
 	public ShopSelectionMenu shopSelectionMenu;
 	public UIScrollView scroll_view;
+	public UILabel userGold;
 
 	private List<GoldShopItem> shopItems = new List<GoldShopItem>();
 
@@ -65,5 +66,12 @@ public class GoldShopMenu : BaseGuiElement {
 	public void OnBack(){
 		Hide();
 		shopSelectionMenu.Show();
+	}
+
+
+
+	public void Update(){
+		if(Config.player != null)
+			userGold.text = Config.player.Gold.ToString();
 	}
 }
