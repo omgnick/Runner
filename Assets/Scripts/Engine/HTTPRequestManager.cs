@@ -85,7 +85,7 @@ public class HTTPRequestManager : MonoSingleton<HTTPRequestManager> {
 
 	public string RequestURL {
 		get{
-			return "http://192.168.1.33";
+			return "http://runner.eu.pn";
 		}
 	}
 

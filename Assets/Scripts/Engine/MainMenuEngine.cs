@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 
+	public bool isQuiting = true;
 
 
 	public void Start () {
@@ -31,6 +32,8 @@ public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 		if(!ev.data.ContainsKey("auth_key"))
 			return;
 
+		HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.AUTH_KEY, OnRecievedAuthKey);
+		
 		string auth_key = ev.data["auth_key"].ToString();
 
 		if(!string.IsNullOrEmpty(auth_key)){
@@ -68,9 +71,16 @@ public class MainMenuEngine : MonoSingleton<MainMenuEngine> {
 
 
 
+	private void OnApplicationQuit() {
+		isQuiting = true;
+	}
+
+
+
 	private void OnDestroy(){
-		HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.RECIEVED_USER,
-		                                                              OnAuthorizationCompleted);
+		if(!isQuiting)
+			HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.RECIEVED_USER,
+			                                                              OnAuthorizationCompleted);
 	}
 
 

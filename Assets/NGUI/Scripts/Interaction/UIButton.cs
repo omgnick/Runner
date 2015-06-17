@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright В© 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -90,12 +90,8 @@ public class UIButton : UIButtonColor
 			if (!enabled) return false;
 			Collider col = GetComponent<Collider>();
 			if (col && col.enabled) return true;
-#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
 			Collider2D c2d = GetComponent<Collider2D>();
 			return (c2d && c2d.enabled);
-#else
-			return false;
-#endif
 		}
 		set
 		{
@@ -108,7 +104,6 @@ public class UIButton : UIButtonColor
 					col.enabled = value;
 					SetState(value ? State.Normal : State.Disabled, false);
 				}
-#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
 				else
 				{
 					Collider2D c2d = GetComponent<Collider2D>();
@@ -120,9 +115,6 @@ public class UIButton : UIButtonColor
 					}
 					else enabled = value;
 				}
-#else
-				else enabled = value;
-#endif
 			}
 		}
 	}
@@ -271,7 +263,7 @@ public class UIButton : UIButtonColor
 			switch (state)
 			{
 				case State.Normal: SetSprite(mNormalSprite); break;
-				case State.Hover: SetSprite(hoverSprite); break;
+				case State.Hover: SetSprite(string.IsNullOrEmpty(hoverSprite) ? mNormalSprite : hoverSprite); break;
 				case State.Pressed: SetSprite(pressedSprite); break;
 				case State.Disabled: SetSprite(disabledSprite); break;
 			}
@@ -281,7 +273,7 @@ public class UIButton : UIButtonColor
 			switch (state)
 			{
 				case State.Normal: SetSprite(mNormalSprite2D); break;
-				case State.Hover: SetSprite(hoverSprite2D); break;
+				case State.Hover: SetSprite(hoverSprite2D == null ? mNormalSprite2D : hoverSprite2D); break;
 				case State.Pressed: SetSprite(pressedSprite2D); break;
 				case State.Disabled: SetSprite(disabledSprite2D); break;
 			}

@@ -112,6 +112,10 @@ public class TournamentMenu : BaseGuiElement {
 		HTTPRequestManager.Instance.EventListener.RemoveEventListener(HTTPResponseEvent.TOURNAMENT_DATA, 
 		                                                           OnTournamentDataRecieved);
 		Hashtable data = ev.data;
+
+		if(data["tournament"] == null)
+			return;
+
 		tournamentData = data["tournament"] as Hashtable;
 		ArrayList list = data["tournament_users"] as ArrayList;
 		//TODO: add server time
