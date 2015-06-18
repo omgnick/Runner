@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{5618C7C2-D584-DA62-451D-499C7D006887}</ProjectGuid>
+	<ProjectGuid>{18DC6EAE-A731-76F5-0E2E-32C7F28769A5}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,8 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Models\IndustrialSciFiBuilderKit\Scripts\SimpleDoor.js" />
-     <Compile Include="Assets\Models\Steel Barrels\demo controls.js" />
+     <Compile Include="Assets\Plugins\IAPCombo\IAP.cs" />
+     <Compile Include="Assets\Plugins\IAPCombo\IAPProduct.cs" />
+     <Compile Include="Assets\Plugins\IAPCombo\demo\IAPComboUI.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\GoogleIAB.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\GoogleIABManager.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\GooglePurchase.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\GoogleSkuInfo.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\demo\GoogleIABEventListener.cs" />
+     <Compile Include="Assets\Plugins\InAppBillingAndroid\demo\IABUIManager.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\StoreKitBinding.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\StoreKitDownload.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\StoreKitManager.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\StoreKitProduct.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\StoreKitTransaction.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\demo\StoreKitEventListener.cs" />
+     <Compile Include="Assets\Plugins\StoreKit\demo\StoreKitGUIManager.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\NGUI\ReadMe - 3.7.4.txt" />
@@ -111,10 +125,6 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>D:/Programs/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{18DC6EAE-A731-76F5-0E2E-32C7F28769A5}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
